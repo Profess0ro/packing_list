@@ -297,10 +297,14 @@ def deletePackingList():
 
         for index, worksheet in enumerate(worksheets[1:], start=1): 
             print(f"# {index} - {worksheet.title.capitalize()}\n\n")
-            choice = input("Which packing list do you want to delete?\n")
-            worksheets.remove([int(choice) + 1])
+        
+        choice = int(input("Enter the number of the packing list you want to delete: "))
+        
+        if 0 < choice <= len(worksheets) - 1:
+            SPREADSHEET.del_worksheet(worksheets[choice])
             print("\n\n Packing list was removed")
-
+        else:
+            print(f"\n{choice} was not an option. Please enter a valid number.")
     else:
         print("You have no packing lists.")
 
