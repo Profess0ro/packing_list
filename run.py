@@ -297,14 +297,15 @@ def deletePackingList():
             print(f"\n{choice} was not an option. Please enter a valid number.")
     else:
         print("You have no packing lists.")
+        menuIfNoListExists()
 
-    while True:
-            menuIfNoListExists()
-
+        
+# Saying goodbye to the user if they want to quit
 def quit():
     print("\n\n\n")
     print("Goodbye and have a nice trip! :)")
     print("\n\n\n")
+    return
     
 
 
