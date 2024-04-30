@@ -289,7 +289,35 @@ This function will delete an
 existing packing list
 """
 def deletePackingList():
-    print("Delete packing list")   
+    print("\n\n\n\n\n\n\n")
+    worksheets = SPREADSHEET.worksheets()
+
+    if len(worksheets) > 1:
+        print("These are your current packing lists: \n")
+
+        for index, worksheet in enumerate(worksheets[1:], start=1): 
+            print(f"# {index} - {worksheet.title.capitalize()}\n\n")
+            choice = input("Which packing list do you want to delete?\n")
+            worksheets.remove([int(choice) + 1])
+            print("\n\n Packing list was removed")
+
+    else:
+        print("You have no packing lists.")
+
+    while True:
+        print("----------------------------------------------\n")    
+        print("# 1. Create a new packing list")
+        print("# 2. Back to main menu\n\n")
+        choice = input("What do you want to do?\n")
+            
+        if choice == "1":
+            createNewPackingList()
+            break  
+        elif choice == "2":
+            mainMenu()
+            break  
+        else:
+            print(f"{choice} was not an option. Please try again.")  
 
 def quit():
     print("\n\n\n")

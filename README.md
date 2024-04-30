@@ -10,3 +10,4 @@
 
 - https://www.youtube.com/watch?v=aEIHZDv_23U - For basic structure of this application<br>
 - https://www.w3schools.com/ - For some basic codes
+- https://developers.google.com/sheets/api/guides/concepts - How to work with spreadsheets/worksheets in python
