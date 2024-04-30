@@ -40,20 +40,8 @@ def allPackingLists():
         either to create a packing list or
         go back to the main menu
         """
-    while True:
-        print("----------------------------------------------\n")    
-        print("# 1. Create a new packing list")
-        print("# 2. Back to main menu\n\n")
-        choice = input("What do you want to do?\n")
-            
-        if choice == "1":
-            createNewPackingList()
-            break  
-        elif choice == "2":
-            mainMenu()
-            break  
-        else:
-            print(f"{choice} was not an option. Please try again.")
+        while True:
+            menuIfNoListExists()
                 
 
 """
@@ -265,24 +253,26 @@ def editExistingPackingList():
         selected_worksheet = worksheets[1]
     # Menu to be shown if there are no lists created
     else:
-        print("You have no packing lists.")
-        print("\n\n")
-        print("1. Create a new packing list")
-        print("2. Go back to main menu\n")
-        choice = input("What do you want to do?\n")
-        if choice == "1":
-            createNewPackingList()
-        elif choice == "2":
-            mainMenu()
-        else:
-            print(f"{choice} was not an option, try again\n")
-            print("Taking you back to the main menu instead")
-            mainMenu()
+        menuIfNoListExists()
 
 
     check_list(selected_worksheet)
     editItemsOnExistingList(selected_worksheet)
 
+def menuIfNoListExists():
+    print("----------------------------------------------\n")    
+    print("# 1. Create a new packing list")
+    print("# 2. Back to main menu\n\n")
+    choice = input("What do you want to do?\n")
+            
+    if choice == "1":
+        createNewPackingList()
+          
+    elif choice == "2":
+        mainMenu()
+         
+    else:
+        print(f"{choice} was not an option. Please try again.")  
 
 """
 This function will delete an 
@@ -297,31 +287,19 @@ def deletePackingList():
 
         for index, worksheet in enumerate(worksheets[1:], start=1): 
             print(f"# {index} - {worksheet.title.capitalize()}\n\n")
-        
+            title = worksheet.title
         choice = int(input("Enter the number of the packing list you want to delete: "))
         
         if 0 < choice <= len(worksheets) - 1:
             SPREADSHEET.del_worksheet(worksheets[choice])
-            print("\n\n Packing list was removed")
+            print(f"\n\n {title} was removed")
         else:
             print(f"\n{choice} was not an option. Please enter a valid number.")
     else:
         print("You have no packing lists.")
 
     while True:
-        print("----------------------------------------------\n")    
-        print("# 1. Create a new packing list")
-        print("# 2. Back to main menu\n\n")
-        choice = input("What do you want to do?\n")
-            
-        if choice == "1":
-            createNewPackingList()
-            break  
-        elif choice == "2":
-            mainMenu()
-            break  
-        else:
-            print(f"{choice} was not an option. Please try again.")  
+            menuIfNoListExists()
 
 def quit():
     print("\n\n\n")
