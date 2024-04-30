@@ -343,5 +343,7 @@ def mainMenu(): # Main menu
     else:
         print("Invalid input. Please try again.")
         mainMenu()
+
+
 # Calling the main menu at startup
 mainMenu()
