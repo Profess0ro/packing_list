@@ -55,17 +55,35 @@ def allPackingLists():
 This function creates a new packing
 list (worksheet) in the spreadsheet 
 that are connected to this app.
+
+When created, the user will get options
+on what to do next.
 """
 def createNewPackingList():
     print("\n")
     print("Oh! So you are planning to travel again\n")
-    new_worksheet = input("Whats the name of your new packing list?: \n")
+    new_worksheet = input("What's the name of your new packing list?: \n")
 
     SPREADSHEET.add_worksheet(title=f"{new_worksheet}", rows="100", cols="10")
     print("\n\n")
     print(f"Packing list {new_worksheet} created successfully...")
     print("\n\n")
+   
+    while True:
+        print("----------------------------------------------\n")
+        print("1. Create a new packing list")
+        print("2. Edit a packing list")
+        print("3. Go back to main menu\n\n")
+        choice = input("What do you want to do now? ")
 
+        if choice == "1":
+            createNewPackingList()
+        elif choice == "2":
+            editExistingPackingList()
+        elif choice == "3":
+            mainMenu()
+        else: # Return to menu options if wrong choice made
+            print("That was not an option, please try again") 
 
 """
 This function displays all the items 
@@ -152,21 +170,22 @@ edited.
 def editExistingPackingList():
     worksheets = SPREADSHEET.worksheets()
     if len(worksheets) > 1:
+        print("\n\n\n\n\n\n")
         print("These are your current packing lists: \n")
         for index, worksheet in enumerate(worksheets[1:], start=1):
             print(f"# {index} - {worksheet.title.capitalize()}")
-
-        choice = input("Enter the number of the packing list you want to work on: ")
-        try:
-            choice_index = int(choice)
-            if 0 < choice_index <= len(worksheets) - 1:
-                selected_worksheet = worksheets[choice_index]
-            else:
-                print("Invalid choice. Please enter a valid number.")
+        while True:
+            choice = input("Enter the number of the packing list you want to work on: \n")
+            try:
+                choice_index = int(choice)
+                if 0 < choice_index <= len(worksheets) - 1:
+                    selected_worksheet = worksheets[choice_index]
+                else:
+                    print(f"{choice} was not an option. Please enter a valid option.")
+                    return
+            except ValueError:
+                print(f"{choice} was not an option. Please enter a valid option.")
                 return
-        except ValueError:
-            print("Invalid input. Please enter a number.")
-            return
 
     elif len(worksheets) == 1:
         print("You have only one packing list: \n")
