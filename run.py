@@ -160,7 +160,7 @@ def deleteItem(worksheet):
     items_list = worksheet.col_values(1)
     packed_list = worksheet.col_values(2)
     print("\n\n\n\n")
-    if items_list < 1:
+    if len(items_list) == 0:
         print("You have no items in this packing list!\n")
         while True:
             print("1. Add an item to this list")
