@@ -1,6 +1,8 @@
 import gspread
 from google.oauth2.service_account import Credentials
-
+from colorama import init
+from colorama import Fore, Back
+init()
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
     "https://www.googleapis.com/auth/drive.file",
@@ -318,20 +320,32 @@ def quit():
 
 
 def mainMenu(): # Main menu 
-    print("**********************************************")
-    print("*                                            *")
-    print("*    Welcome to your packing list planner    *")
-    print("*                                            *")
-    print("* Please select one of the following options *")
-    print("* ------------------------------------------ *")
-    print("* 1. Add a new packing list                  *")
-    print("* 2. Delete a packing list                   *") 
-    print("* 3. Show all packing lists                  *")
-    print("* 4. Edit existing packing list              *")
-    print("* 5. Quit                                    *")
-    print("**********************************************")
+    print(Back.GREEN, Fore.BLACK + 
+          "**********************************************")
+    print(Back.GREEN, Fore.BLACK + 
+          "*                                            *")
+    print(Back.GREEN, Fore.BLACK + 
+          "*    Welcome to your packing list planner    *")
+    print(Back.GREEN, Fore.BLACK + 
+          "*                                            *")
+    print(Back.GREEN, Fore.BLACK + 
+          "* Please select one of the following options *")
+    print(Back.GREEN, Fore.BLACK + 
+          "* ------------------------------------------ *")
+    print(Back.GREEN, Fore.BLACK + 
+          "* 1. Add a new packing list                  *")
+    print(Back.GREEN, Fore.BLACK + 
+          "* 2. Delete a packing list                   *") 
+    print(Back.GREEN, Fore.BLACK + 
+          "* 3. Show all packing lists                  *")
+    print(Back.GREEN, Fore.BLACK + 
+          "* 4. Edit existing packing list              *")
+    print(Back.GREEN, Fore.BLACK + 
+          "* 5. Quit                                    *")
+    print(Back.GREEN, Fore.BLACK + 
+          "**********************************************")
 
-    choice = input("Enter your choice: ")
+    choice = input("Enter your choice:                             \n")
 
     if choice == "1":
         createNewPackingList()
