@@ -40,20 +40,20 @@ def allPackingLists():
         either to create a packing list or
         go back to the main menu
         """
-        while True:
-            print("----------------------------------------------\n")    
-            print("# 1. Create a new packing list")
-            print("# 2. Back to main menu\n\n")
-            choice = input("What do you want to do?\n")
+    while True:
+        print("----------------------------------------------\n")    
+        print("# 1. Create a new packing list")
+        print("# 2. Back to main menu\n\n")
+        choice = input("What do you want to do?\n")
             
-            if choice == "1":
-                createNewPackingList()
-                break  
-            elif choice == "2":
-                mainMenu()
-                break  
-            else:
-                print(f"{choice} was not an option. Please try again.")
+        if choice == "1":
+            createNewPackingList()
+            break  
+        elif choice == "2":
+            mainMenu()
+            break  
+        else:
+            print(f"{choice} was not an option. Please try again.")
                 
 
 """
@@ -102,22 +102,39 @@ def check_list(worksheet):
     items_list = worksheet.col_values(1)
     packed_list = worksheet.col_values(2)
     print("\n\n\n\n")
-    print("Here are your items to pack:")
-    print("----------------------------")
-    
-    """
-    This is the format that the
-    items will be shown in the list.
-    Since all items that are added
-    to the list aren´t packed since
-    the user changing status on the 
-    item in another function.
-    """
-    for items, packed in zip(items_list, packed_list):
-        print(f"{items.capitalize()}, Is it packed?: {packed}")
-    print("\n\n")
-    
-    editItemsOnExistingList(worksheet)
+    if len(items_list) == 0:
+        print("You have no items in this packing list!\n\n")
+        while True:
+            print("Here are some options for you:\n")
+            print("1. Add an item to this list")
+            print("2. Edit another packing list")
+            print("3. Go back to main menu\n")
+            choice = input("What do you want to do?\n")
+            if choice == "1":
+                addNewItem(worksheet)
+            elif choice == "2":
+                allPackingLists()
+            elif choice == "3":
+                mainMenu()
+            else:
+                print(f"{choice} was not an option, please try again\n\n\n")
+    else:
+        print("Here are your items to pack:")
+        print("----------------------------")
+        
+        """
+        This is the format that the
+        items will be shown in the list.
+        Since all items that are added
+        to the list aren´t packed since
+        the user changing status on the 
+        item in another function.
+        """
+        for items, packed in zip(items_list, packed_list):
+            print(f"{items.capitalize()}, Is it packed?: {packed}")
+        print("\n\n")
+        
+        editItemsOnExistingList(worksheet)
 
 """
 This funtion will add an item
@@ -138,8 +155,41 @@ def addNewItem(selected_worksheet):
     print("\n\n\n")
     
 
-def deleteItem():
+def deleteItem(worksheet):
     print("Delete an item")
+    items_list = worksheet.col_values(1)
+    packed_list = worksheet.col_values(2)
+    print("\n\n\n\n")
+    if items_list < 1:
+        print("You have no items in this packing list!\n")
+        while True:
+            print("1. Add an item to this list")
+            print("2. Edit another packing list")
+            print("3. Go back to main menu")
+            choice = input("What do you want to do?\n")
+            if choice == "1":
+                addNewItem()
+            elif choice == "2":
+                allPackingLists()
+            elif choice == "3":
+                mainMenu()
+            else:
+                print(f"{choice} was not an option, please try again\n\n\n")
+    else:
+        print("Here are your items to pack:")
+        print("----------------------------")
+        
+        """
+        This is the format that the
+        items will be shown in the list.
+        Since all items that are added
+        to the list aren´t packed since
+        the user changing status on the 
+        item in another function.
+        """
+        for items, packed in zip(items_list, packed_list):
+            print(f"{items.capitalize()}, Is it packed?: {packed}")
+        print("\n\n")
 
 def changeStatusOnItem():
     print("Change status on item")
