@@ -28,27 +28,21 @@ def allPackingLists():
             print(f"# {index} - {worksheet.title.capitalize()}")
     else:
         print("You have no packing lists.")
-        return None
-    print("----------------------------------------------\n")    
-    print("# A. Add a new packing list")
-    print("# B. Delete a packing list")
-    print("# C. Edit a packing list")
-    print("# D. Back to main menu\n\n")
-    choice = input("What do you want to do now?\n")
-    
-
-    if choice.lower() == "a":
-        createNewPackingList()
-    elif choice.lower() == "b":
-        deletePackingList()
-    elif choice.lower() == "c":
-        editExistingPackingList()
-    elif choice.lower() == "d":
-        print("\n\n\n\n\n\n\n")
-        mainMenu()
-    else:
-        print("Invalid input. Please try again.")
-        allPackingLists()
+        while True:
+            print("----------------------------------------------\n")    
+            print("# 1. Create a new packing list")
+            print("# 2. Back to main menu\n\n")
+            choice = input("What do you want to do?\n")
+            
+            if choice == "1":
+                createNewPackingList()
+                break  
+            elif choice == "2":
+                mainMenu()
+                break  
+            else:
+                print(f"{choice} was not an option. Please try again.")
+                
 
 
 """
@@ -170,34 +164,46 @@ edited.
 def editExistingPackingList():
     worksheets = SPREADSHEET.worksheets()
     if len(worksheets) > 1:
-        print("\n\n\n\n\n\n")
+        print("\n\n\n")
         print("These are your current packing lists: \n")
         for index, worksheet in enumerate(worksheets[1:], start=1):
             print(f"# {index} - {worksheet.title.capitalize()}")
-        while True:
-            choice = input("Enter the number of the packing list you want to work on: \n")
-            try:
-                choice_index = int(choice)
-                if 0 < choice_index <= len(worksheets) - 1:
-                    selected_worksheet = worksheets[choice_index]
-                else:
-                    print(f"{choice} was not an option. Please enter a valid option.")
-                    return
-            except ValueError:
+        
+        choice = input("Enter the number of the packing list you want to work on: \n")
+        try:
+            choice_index = int(choice)
+            if 0 < choice_index <= len(worksheets) - 1:
+                selected_worksheet = worksheets[choice_index]
+            else:
+                print("\n\n")
                 print(f"{choice} was not an option. Please enter a valid option.")
-                return
+                editExistingPackingList()
+        except ValueError:
+            print("\n\n")
+            print(f"{choice} was not an option. Please enter a valid option.")
+            editExistingPackingList()
 
-    elif len(worksheets) == 1:
+    elif len(worksheets) == 2:
         print("You have only one packing list: \n")
-        print(f"{worksheets[0].title.capitalize()}")
-        selected_worksheet = worksheets[0]
+        print(f"{worksheets[1].title.capitalize()}")
+        selected_worksheet = worksheets[1]
 
     else:
         print("You have no packing lists.")
-        return
+        print("\n\n")
+        print("1. Create a new packing list")
+        print("2. Go back to main menu\n")
+        choice = input("What do you want to do?\n")
+        if choice == "1":
+            createNewPackingList()
+        elif choice == "2":
+            mainMenu()
+        else:
+            print(f"{choice} was not an option, try again\n")
+            print("Taking you back to the main menu instead")
+            mainMenu()
 
-    print("\n")
-    print("Editing the selected packing list...\n")
+
     check_list(selected_worksheet)
     editItemsOnExistingList(selected_worksheet)
 
@@ -208,6 +214,11 @@ existing packing list
 """
 def deletePackingList():
     print("Delete packing list")   
+
+def quit():
+    print("Goodbye and have a nice trip! :)")
+    breakpoint
+
 
 def mainMenu():
     print("**********************************************")
