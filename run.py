@@ -24,10 +24,22 @@ def allPackingLists():
 
     if len(worksheets) > 1:
         print("These are your current packing lists: \n")
-        for index, worksheet in enumerate(worksheets[1:], start=1):
+        """ 
+        since you can´t delete all worksheets
+        this function will not include
+        the first worksheet and start
+        counting the list from 1 instead of 2
+        """
+        for index, worksheet in enumerate(worksheets[1:], start=1): 
             print(f"# {index} - {worksheet.title.capitalize()}")
     else:
         print("You have no packing lists.")
+        """
+        If there are no packing list to be shown 
+        there will be 2 options for the user
+        either to create a packing list or
+        go back to the main menu
+        """
         while True:
             print("----------------------------------------------\n")    
             print("# 1. Create a new packing list")
@@ -43,7 +55,6 @@ def allPackingLists():
             else:
                 print(f"{choice} was not an option. Please try again.")
                 
-
 
 """
 This function creates a new packing
@@ -62,7 +73,11 @@ def createNewPackingList():
     print("\n\n")
     print(f"Packing list {new_worksheet} created successfully...")
     print("\n\n")
-   
+    """
+    When you have created a packing list
+    this menu will be shown
+    with options for the user
+    """
     while True:
         print("----------------------------------------------\n")
         print("1. Create a new packing list")
@@ -76,7 +91,7 @@ def createNewPackingList():
             editExistingPackingList()
         elif choice == "3":
             mainMenu()
-        else: # Return to menu options if wrong choice made
+        else: 
             print("That was not an option, please try again") 
 
 """
@@ -90,7 +105,14 @@ def check_list(worksheet):
     print("Here are your items to pack:")
     print("----------------------------")
     
-    
+    """
+    This is the format that the
+    items will be shown in the list.
+    Since all items that are added
+    to the list aren´t packed since
+    the user changing status on the 
+    item in another function.
+    """
     for items, packed in zip(items_list, packed_list):
         print(f"{items.capitalize()}, Is it packed?: {packed}")
     print("\n\n")
@@ -108,7 +130,7 @@ or not
 def addNewItem(selected_worksheet):
     item = input("Enter the item you want to add: ")
 
-
+    # format how the items are added in the list
     selected_worksheet.append_row([item, "No"])
     print(f"Item '{item}' added to the packing list.")
     
@@ -127,6 +149,7 @@ or list the items in the selected
 packing list
 """
 def editItemsOnExistingList(selected_worksheet):
+    # Menu that will be shown
     print("*                                            *")
     print("*   What do you want to do with this list?   *")
     print("*                                            *")
@@ -187,7 +210,7 @@ def editExistingPackingList():
         print("You have only one packing list: \n")
         print(f"{worksheets[1].title.capitalize()}")
         selected_worksheet = worksheets[1]
-
+    # Menu to be shown if there are no lists created
     else:
         print("You have no packing lists.")
         print("\n\n")
@@ -220,7 +243,7 @@ def quit():
     breakpoint
 
 
-def mainMenu():
+def mainMenu(): # Main menu 
     print("**********************************************")
     print("*                                            *")
     print("*    Welcome to your packing list planner    *")
@@ -249,5 +272,5 @@ def mainMenu():
     else:
         print("Invalid input. Please try again.")
         mainMenu()
-
+# Calling the main menu at startup
 mainMenu()
