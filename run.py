@@ -238,6 +238,8 @@ def editExistingPackingList():
             choice_index = int(choice)
             if 0 < choice_index <= len(worksheets) - 1:
                 selected_worksheet = worksheets[choice_index]
+                check_list(selected_worksheet)
+                editItemsOnExistingList(selected_worksheet)
             else:
                 print("\n\n")
                 print(f"{choice} was not an option. Please enter a valid option.")
@@ -252,12 +254,13 @@ def editExistingPackingList():
         print(f"{worksheets[1].title.capitalize()}")
         selected_worksheet = worksheets[1]
     # Menu to be shown if there are no lists created
+
     else:
+        print("\n\nThere is no packing list to be edited...\n\n")
         menuIfNoListExists()
 
 
-    check_list(selected_worksheet)
-    editItemsOnExistingList(selected_worksheet)
+
 
 """
 This menu will be shown if 
