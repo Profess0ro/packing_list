@@ -132,6 +132,7 @@ def addNewItem(selected_worksheet):
 
     # format how the items are added in the list
     selected_worksheet.append_row([item, "No"])
+    print("\n\n\n")
     print(f"Item '{item}' added to the packing list.")
     
 
@@ -239,8 +240,10 @@ def deletePackingList():
     print("Delete packing list")   
 
 def quit():
+    print("\n\n\n")
     print("Goodbye and have a nice trip! :)")
-    breakpoint
+    print("\n\n\n")
+    
 
 
 def mainMenu(): # Main menu 
