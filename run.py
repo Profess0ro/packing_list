@@ -259,6 +259,11 @@ def editExistingPackingList():
     check_list(selected_worksheet)
     editItemsOnExistingList(selected_worksheet)
 
+"""
+This menu will be shown if 
+no packing list has been
+created so far.
+"""
 def menuIfNoListExists():
     print("----------------------------------------------\n")    
     print("# 1. Create a new packing list")
@@ -299,7 +304,7 @@ def deletePackingList():
         print("You have no packing lists.")
         menuIfNoListExists()
 
-        
+
 # Saying goodbye to the user if they want to quit
 def quit():
     print("\n\n\n")
