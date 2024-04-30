@@ -128,12 +128,14 @@ or not
 """
 
 def addNewItem(selected_worksheet):
+    print("\n\n\n")
     item = input("Enter the item you want to add: ")
 
     # format how the items are added in the list
     selected_worksheet.append_row([item, "No"])
     print("\n\n\n")
     print(f"Item '{item}' added to the packing list.")
+    print("\n\n\n")
     
 
 def deleteItem():
