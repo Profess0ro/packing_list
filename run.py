@@ -1,7 +1,7 @@
 import gspread
 from google.oauth2.service_account import Credentials
 from colorama import init
-from colorama import Fore
+from colorama import Fore, Back
 init(autoreset=True)
 init()
 
@@ -121,13 +121,14 @@ def check_list(worksheet):
     packed_list = worksheet.col_values(2)
     clear()
     if len(items_list) == 0:
-        print("You have no items in this packing list!\n\n")
+        print(Fore.RED, Back.WHITE+"You have no items in this packing list!\n\n")
         while True:
             print("Here are some options for you:\n")
             print("1. Add an item to this list")
             print("2. Edit another packing list")
             print("3. Go back to main menu\n")
-            choice = input("What do you want to do?\n")
+            choice = input(Fore.CYAN+"What do you want to do?\n")
+            print(Fore.RESET)
             if choice == "1":
                 add_new_item_to_packing_list(worksheet)
                 break
@@ -334,11 +335,15 @@ def delete_packing_lists():
         menu_if_no_list_exists()
 
 
-# Saying goodbye to the user if they want to quit
+
 def quit():
+    """
+    Saying goodbye to the user if they want to quit
+    """
     clear()
     print(Fore.YELLOW + "Goodbye and have a nice trip! :)")
-    
+    import sys
+    sys.exit()
 def clear():
     """
     This function will clear the screen
@@ -370,8 +375,8 @@ def main_menu():
     print("* 3. Show all packing lists                  *")
     print("* 4. Edit existing packing list              *")
     print("* 5. Quit                                    *")
-    print("**********************************************")
-    choice = input("Enter your choice:                             \n")
+    print("**********************************************\n")
+    choice = input(Fore.CYAN+"Enter your choice:                             \n")
 
     if choice == "1":
         create_a_new_packing_list()
