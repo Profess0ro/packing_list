@@ -3,10 +3,9 @@ from google.oauth2.service_account import Credentials
 from colorama import init
 from colorama import Fore
 init(autoreset=True)
-import os
-os.system('cls')
-
 init()
+
+
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
     "https://www.googleapis.com/auth/drive.file",
@@ -19,33 +18,38 @@ GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SPREADSHEET = GSPREAD_CLIENT.open("packing_list_app")
 
 
-"""
-This function displaying all
-packing lists that has been
-created by the user
-"""
-def allPackingLists():
-    print("\n\n\n\n\n\n\n")
-    worksheets = SPREADSHEET.worksheets()
 
+def allPackingLists():
+    """
+    This function displaying all
+    packing lists that has been
+    created by the user
+
+    ----------------------
+
+    Since you can´t delete all worksheets
+    this function will not include
+    the first worksheet and start
+    counting the list from 1 instead of 2
+    
+    ----------------------
+
+    If there are no packing list to be shown 
+    there will be 2 options for the user
+    either to create a packing list or
+    go back to the main menu
+
+    """
+    worksheets = SPREADSHEET.worksheets()
+    clear()
     if len(worksheets) > 1:
         print("These are your current packing lists: \n")
-        """ 
-        since you can´t delete all worksheets
-        this function will not include
-        the first worksheet and start
-        counting the list from 1 instead of 2
-        """
+
         for index, worksheet in enumerate(worksheets[1:], start=1): 
             print(f"# {index} - {worksheet.title.capitalize()}")
     else:
         print("You have no packing lists.")
-        """
-        If there are no packing list to be shown 
-        there will be 2 options for the user
-        either to create a packing list or
-        go back to the main menu
-        """
+
         while True:
             menuIfNoListExists()
                 
@@ -60,13 +64,12 @@ on what to do next.
 """
 def createNewPackingList():
     print("\n")
-    print("Oh! So you are planning to travel again\n")
+    print(Fore.YELLOW + "Oh! So you are planning to travel again\n")
     new_worksheet = input("What's the name of your new packing list?: \n")
 
     SPREADSHEET.add_worksheet(title=f"{new_worksheet}", rows="100", cols="10")
-    print("\n\n")
-    print(f"Packing list {new_worksheet} created successfully...")
-    print("\n\n")
+    clear()
+    print(Fore.GREEN + f"Packing list {new_worksheet} created successfully...")
     """
     When you have created a packing list
     this menu will be shown
@@ -84,9 +87,12 @@ def createNewPackingList():
         elif choice == "2":
             editExistingPackingList()
         elif choice == "3":
+            clear()
             mainMenu()
+            break
         else: 
-            print("That was not an option, please try again") 
+            print(Fore.RED + f"{choice} was not an option, please try again")
+            
 
 """
 This function displays all the items 
@@ -321,6 +327,15 @@ def quit():
     return
     
 def clear():
+    """
+    This function will clear the screen
+    from all that has been written
+    in the screen earlier
+
+    It works on Windows, mac and Linux.
+    """
+    import os
+    os.system('cls')
     from os import system, name
     
     if name == 'nt':
@@ -330,7 +345,7 @@ def clear():
     else:
         _ = system('clear')
 
-def mainMenu(): # Main menu 
+def mainMenu(): 
     print("**********************************************")
     print("*                                            *")
     print("*    Welcome to your packing list planner    *")
