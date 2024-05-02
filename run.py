@@ -295,11 +295,11 @@ def edit_existing_packing_list():
                 edit_item_on_packing_list(selected_worksheet)
             else:
                 print("\n\n")
-                print(f"{choice} was not an option. Please enter a valid option.")
+                print(Fore.RED+f"{choice} was not an option. Please enter a valid option.")
                 edit_existing_packing_list()
         except ValueError:
             print("\n\n")
-            print(f"{choice} was not an option. Please enter a valid option.")
+            print(Fore.RED+f"{choice} was not an option. Please enter a valid option.")
             edit_existing_packing_list()
 
     elif len(worksheets) == 2:
@@ -335,7 +335,7 @@ def menu_if_no_list_exists():
         main_menu()
          
     else:
-        print(f"{choice} was not an option. Please try again.")  
+        print(Fore.RED+f"{choice} was not an option. Please try again.")  
 
 
 def delete_packing_lists():
@@ -358,7 +358,7 @@ def delete_packing_lists():
             SPREADSHEET.del_worksheet(worksheets[choice])
             print(f"\n\n {title} was removed")
         else:
-            print(f"\n{choice} was not an option. Please enter a valid number.")
+            print(Fore.RED+f"\n{choice} was not an option. Please enter a valid number.")
     else:
         print("You have no packing lists.")
         menu_if_no_list_exists()
