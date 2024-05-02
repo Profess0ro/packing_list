@@ -1,7 +1,11 @@
 import gspread
 from google.oauth2.service_account import Credentials
 from colorama import init
-from colorama import Fore, Back
+from colorama import Fore
+init(autoreset=True)
+import os
+os.system('cls')
+
 init()
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -312,39 +316,33 @@ def deletePackingList():
 
 # Saying goodbye to the user if they want to quit
 def quit():
-    print("\n\n\n")
+    clear()
     print("Goodbye and have a nice trip! :)")
-    print("\n\n\n")
     return
     
-
+def clear():
+    from os import system, name
+    
+    if name == 'nt':
+        _ = system('cls')
+ 
+    
+    else:
+        _ = system('clear')
 
 def mainMenu(): # Main menu 
-    print(Back.GREEN, Fore.BLACK + 
-          "**********************************************")
-    print(Back.GREEN, Fore.BLACK + 
-          "*                                            *")
-    print(Back.GREEN, Fore.BLACK + 
-          "*    Welcome to your packing list planner    *")
-    print(Back.GREEN, Fore.BLACK + 
-          "*                                            *")
-    print(Back.GREEN, Fore.BLACK + 
-          "* Please select one of the following options *")
-    print(Back.GREEN, Fore.BLACK + 
-          "* ------------------------------------------ *")
-    print(Back.GREEN, Fore.BLACK + 
-          "* 1. Add a new packing list                  *")
-    print(Back.GREEN, Fore.BLACK + 
-          "* 2. Delete a packing list                   *") 
-    print(Back.GREEN, Fore.BLACK + 
-          "* 3. Show all packing lists                  *")
-    print(Back.GREEN, Fore.BLACK + 
-          "* 4. Edit existing packing list              *")
-    print(Back.GREEN, Fore.BLACK + 
-          "* 5. Quit                                    *")
-    print(Back.GREEN, Fore.BLACK + 
-          "**********************************************")
-
+    print("**********************************************")
+    print("*                                            *")
+    print("*    Welcome to your packing list planner    *")
+    print("*                                            *")
+    print("* Please select one of the following options *")
+    print("* ------------------------------------------ *")
+    print("* 1. Add a new packing list                  *")
+    print("* 2. Delete a packing list                   *") 
+    print("* 3. Show all packing lists                  *")
+    print("* 4. Edit existing packing list              *")
+    print("* 5. Quit                                    *")
+    print("**********************************************")
     choice = input("Enter your choice:                             \n")
 
     if choice == "1":
@@ -358,7 +356,7 @@ def mainMenu(): # Main menu
     elif choice == "5":
         quit()
     else:
-        print("Invalid input. Please try again.")
+        print(Fore.RED + f"{choice} was not an option. Please try again.")
         mainMenu()
 
 
