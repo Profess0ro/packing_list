@@ -73,25 +73,27 @@ def create_a_new_packing_list():
     """
     clear()
     print(Fore.YELLOW + "Oh! So you are planning to travel again\n")
-    new_worksheet = input("What's the name of your new packing list?: \n")
-
-    SPREADSHEET.add_worksheet(title=f"{new_worksheet}", rows="100", cols="10")
-    clear()
-    print(Fore.GREEN + f"Packing list {new_worksheet} created successfully...")
-
     while True:
+
+        new_worksheet_name = input("What's the name of your new packing list?: \n")
+
+        new_worksheet = SPREADSHEET.add_worksheet(title=new_worksheet_name, rows="100", cols="10")
+        clear()
+        print(Fore.GREEN + f"Packing list {new_worksheet_name} created successfully...")
+
+    
         print("----------------------------------------------\n")
         print("1. Create a new packing list")
-        print("2. Edit a packing list")
+        print("2. Add item to packing list")
         print("3. Go back to main menu\n\n")
         choice = input("What do you want to do now? ")
 
         if choice == "1":
-            create_a_new_packing_list()
-            break
+            print("\n")
+            continue
         elif choice == "2":
-            edit_existing_packing_list()
-            break
+            add_new_item_to_packing_list(new_worksheet)
+            
         elif choice == "3":
             clear()
             main_menu()
@@ -154,7 +156,8 @@ def check_list(worksheet):
 
 
 
-def add_new_item_to_packing_list(selected_worksheet):
+
+def add_new_item_to_packing_list(worksheet):
     """
     This funtion will add an item
     to the selected packing list
@@ -166,42 +169,44 @@ def add_new_item_to_packing_list(selected_worksheet):
     item = input("Enter the item you want to add: ")
 
     # format how the items are added in the list
-    selected_worksheet.append_row([item, "No"])
+    worksheet.append_row([item, "No"])
     clear()
     print(f"Item '{item}' added to the packing list.")
     
+
     
 
-def delete_item_on_packing_list(worksheet):
-    items_list = worksheet.col_values(1)
-    packed_list = worksheet.col_values(2)
-    clear()
+def delete_item_on_packing_list(selected_worksheet):
+    items_list = selected_worksheet.col_values(1)
+    
     if len(items_list) == 0:
-        print("You have no items in this packing list!\n")
-        while True:
-            print("1. Add an item to this list")
-            print("2. Edit another packing list")
-            print("3. Go back to main menu")
-            choice = input("What do you want to do?\n")
-            if choice == "1":
-                add_new_item_to_packing_list()
-                break
-            elif choice == "2":
-                all_packing_lists()
-                break
-            elif choice == "3":
-                clear()
-                main_menu()
-                break
-            else:
-                print(f"{choice} was not an option, please try again\n\n\n")
-    else:
-        print("Here are your items to pack:")
-        print("----------------------------")
+        print("There are no items in this packing list to delete.\n")
+        return
+    
+    print(Fore.YELLOW + "Here are the items in the packing list:")
+    print("--------------------------------------")
+    for index, item in enumerate(items_list, start=1):
+        print(Fore.BLUE+f"{index}. {item.capitalize()}")
         
-        for items, packed in zip(items_list, packed_list):
-            print(f"{items.capitalize()}, Is it packed?: {packed}")
-        print("\n\n")
+    
+    while True:
+        try:
+            print("\n\n")
+            item_index = int(input(Fore.CYAN + "Enter the number of the item you want to delete: "))
+            print(Fore.RESET)
+            if 1 <= item_index <= len(items_list):
+                confirmation = input(f"Are you sure you want to delete '{items_list[item_index - 1]}'? (y/n): ")
+                if confirmation.lower() == "y":
+                    selected_worksheet.delete_rows(item_index)
+                    print(Fore.GREEN+f"Item '{items_list[item_index - 1]}' deleted successfully.")
+                else:
+                    clear()
+                    print("Deletion canceled.")                    
+                return
+            else:
+                print(Fore.RED+"Invalid item number. Please enter a valid number.")
+        except ValueError:
+            print(Fore.RED+"Invalid input. Please enter a number.")
 
 def change_status_on_item():
     print("Change status on item")
@@ -233,7 +238,7 @@ def edit_item_on_packing_list(selected_worksheet):
     if choice == "1":
         add_new_item_to_packing_list(selected_worksheet)
     elif choice == "2":
-        delete_item_on_packing_list()
+        delete_item_on_packing_list(selected_worksheet)
     elif choice == "3":
         check_list(selected_worksheet)
     elif choice == "4":
@@ -363,6 +368,8 @@ def clear():
     else:
         _ = system('clear')
 
+
+
 def main_menu(): 
     print("**********************************************")
     print("*                                            *")
@@ -393,5 +400,5 @@ def main_menu():
         main_menu()
 
 
-
-main_menu()
+if __name__ == "__main__":
+    main_menu()
