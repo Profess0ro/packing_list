@@ -73,36 +73,41 @@ def create_a_new_packing_list():
     """
     This function creates a new packing
     list (worksheet) in the spreadsheet
-    that are connected to this app.
+    that is connected to this app.
 
     When created, the user will get options
     on what to do next.
+
     ---------------------------------------
-    When you have created a packing list
-    a menu will be shown
-    with options for the user asking
-    what to do next
+
+    When you have created a packing list,
+    a menu will be shown with options for
+    the user asking what to do next.
     """
     clear()
     print(Fore.YELLOW + "Oh! So you are planning to travel again\n")
     while True:
-
-        new_worksheet_name = input
-        ("What's the name of your new packing list?: \n")
-        worksheet_titles = [worksheet.title.lower()
-                            for worksheet in SPREADSHEET.worksheets()]
-        if new_worksheet_name.lower() in worksheet_titles:
-            print(Fore.RED + "A packing list with the name")
-            print(f"'{new_worksheet_name}' already exists")
-            print("Please choose a different name.\n")
+        new_worksheet_name = input(
+            "What's the name of your new packing list?: \n")
+        if new_worksheet_name.isalpha():
+            worksheet_titles = [worksheet.title.lower() for
+                                worksheet in SPREADSHEET.worksheets()]
+            if new_worksheet_name.lower() in worksheet_titles:
+                print(Fore.RED + "A packing list with the name")
+                print(f"'{new_worksheet_name}'")
+                print(Fore.RED + "already exists.")
+                print("Please choose a different name.\n")
+            else:
+                new_worksheet = SPREADSHEET.add_worksheet(
+                    title=new_worksheet_name, rows="100", cols="2")
+                clear()
+                print(Fore.GREEN + "Packing list")
+                print(f"'{new_worksheet_name}'")
+                print(Fore.GREEN + "created successfully...")
+                break
         else:
-            new_worksheet = SPREADSHEET.add_worksheet(
-                title=new_worksheet_name, rows="100", cols="2")
-            clear()
-            print(Fore.GREEN + "Packing list ")
-            print(f"'{new_worksheet_name}'")
-            print("created successfully...")
-            break
+            print(Fore.RED + "Please use alphabetic characters only.\n")
+
     while True:
         print("----------------------------------------------\n")
         print("1. Create a new packing list")
