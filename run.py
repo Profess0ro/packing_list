@@ -155,7 +155,8 @@ def check_list(worksheet):
     packed_list = worksheet.col_values(2)
     clear()
     if len(items_list) == 0:
-        print(Fore.RED+f"You have no items in '{worksheet.title}'!\n\n")
+        print(Fore.RED + "You have no items in")
+        print(f"'{worksheet.title}'!\n\n")
         while True:
             print(Fore.CYAN+"Here are some options for you:\n")
             print("1. Add an item to this list")
@@ -192,18 +193,20 @@ def add_new_item_to_packing_list(worksheet):
     or not
     """
     clear()
-    print(Fore.YELLOW+f"Adding items to '{worksheet.title}'")
-    print(Fore.CYAN + "(max 20 characters and no special characters)")
-    item = input("Enter the item you want to add: ")
 
-    if item.replace(" ", "").isalpha():
-        worksheet.append_row([item, "No"])
-        clear()
-        print(f"Item '{item}' added to the packing list.\n ")
-        check_list(worksheet)
-    else:
-        print(Fore.RED + "Please use alphabetic characters only.\n")
-
+    while True:
+        print(Fore.YELLOW+f"Adding items to '{worksheet.title}'")
+        print(Fore.CYAN + "(max 30 characters and no special characters)")
+        item = input("Enter the item you want to add: \n")
+        if (item.replace(" ", "").isalpha() and
+            len(item) <= 30):
+            worksheet.append_row([item, "No"])
+            clear()
+            print(f"Item '{item}' added to the packing list.\n ")
+            check_list(worksheet)
+        else:
+            print(Fore.RED + "Please use alphabetic characters only.\n")
+            
 
 def delete_item_on_packing_list(worksheet):
     items_list = worksheet.col_values(1)
