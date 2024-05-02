@@ -87,9 +87,10 @@ def create_a_new_packing_list():
     clear()
     print(Fore.YELLOW + "Oh! So you are planning to travel again\n")
     while True:
+        print("(max 20 characters and no special characters)")
         new_worksheet_name = input(
             "What's the name of your new packing list?: \n")
-        if new_worksheet_name.isalpha():
+        if new_worksheet_name.isalpha() and len(new_worksheet_name) <= 20:
             worksheet_titles = [worksheet.title.lower() for
                                 worksheet in SPREADSHEET.worksheets()]
             if new_worksheet_name.lower() in worksheet_titles:
@@ -105,8 +106,14 @@ def create_a_new_packing_list():
                 print(f"'{new_worksheet_name}'")
                 print(Fore.GREEN + "created successfully...")
                 break
+        elif len(new_worksheet_name) > 20:
+            print(Fore.RED + "It´s more than 20 characters in:")
+            print(f"'{new_worksheet_name}'")
+            print(Fore.RED + "Please try again.")
         else:
             print(Fore.RED + "Please use alphabetic characters only.\n")
+            print(f"'{new_worksheet_name}' is invalid.")
+            print(Fore.RED + "Please try again.")
 
     while True:
         print("----------------------------------------------\n")
@@ -185,11 +192,13 @@ def add_new_item_to_packing_list(worksheet):
     print(Fore.YELLOW+f"Adding items to '{worksheet.title}'")
     item = input("Enter the item you want to add: ")
 
-    # format how the items are added in the list
-    worksheet.append_row([item, "No"])
-    clear()
-    print(f"Item '{item}' added to the packing list.\n ")
-    check_list(worksheet)
+    if item.isalpha():
+        worksheet.append_row([item, "No"])
+        clear()
+        print(f"Item '{item}' added to the packing list.\n ")
+        check_list(worksheet)
+    else:
+        print(Fore.RED + "Please use alphabetic characters only.\n")
 
 
 def delete_item_on_packing_list(worksheet):
