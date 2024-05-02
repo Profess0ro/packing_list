@@ -1,7 +1,7 @@
 import gspread
 from google.oauth2.service_account import Credentials
 from colorama import init
-from colorama import Fore, Back
+from colorama import Fore
 init(autoreset=True)
 init()
 
@@ -17,7 +17,26 @@ SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SPREADSHEET = GSPREAD_CLIENT.open("packing_list_app")
 
+def edit_packing_list_menu():
+    while True:
+        print("----------------------------------------------\n")
+        print("1. Create a new packing list")
+        print("2. Add items to a packing list")
+        print("3. Go back to main menu\n\n")
+        choice = input("What do you want to do now? ")
 
+        if choice == "1":
+            print("\n")
+            create_a_new_packing_list()
+        elif choice == "2":
+            edit_existing_packing_list()
+            
+        elif choice == "3":
+            clear()
+            main_menu()
+            break
+        else: 
+            print(Fore.RED + f"{choice} was not an option, please try again")
 
 def all_packing_lists():
     """
@@ -47,11 +66,10 @@ def all_packing_lists():
 
         for index, worksheet in enumerate(worksheets[1:], start=1): 
             print(f"# {index} - {worksheet.title.capitalize()}")
+            edit_packing_list_menu()
     else:
-        print("You have no packing lists.")
-
-        while True:
-            menu_if_no_list_exists()
+        print(Fore.RED+"You have no packing lists.")
+        menu_if_no_list_exists()
                 
 
 
@@ -126,9 +144,9 @@ def check_list(worksheet):
     packed_list = worksheet.col_values(2)
     clear()
     if len(items_list) == 0:
-        print(Fore.RED, Back.WHITE+f"You have no items in '{worksheet.title}' packing list!\n\n")
+        print(Fore.RED+f"You have no items in '{worksheet.title}' packing list!\n\n")
         while True:
-            print("Here are some options for you:\n")
+            print(Fore.CYAN+"Here are some options for you:\n")
             print("1. Add an item to this list")
             print("2. Edit another packing list")
             print("3. Go back to main menu\n")
@@ -136,10 +154,10 @@ def check_list(worksheet):
             print(Fore.RESET)
             if choice == "1":
                 add_new_item_to_packing_list(worksheet)
-                break
+                
             elif choice == "2":
                 all_packing_lists()
-                break
+                
             elif choice == "3":
                 clear()
                 main_menu()
@@ -182,7 +200,7 @@ def add_new_item_to_packing_list(worksheet):
 
 def delete_item_on_packing_list(worksheet):
     items_list = worksheet.col_values(1)
-    
+    clear()
     if len(items_list) == 0:
         print("There are no items in this packing list to delete.\n")
         return
@@ -202,6 +220,7 @@ def delete_item_on_packing_list(worksheet):
                 confirmation = input(f"Are you sure you want to delete '{items_list[item_index - 1]}'? (y/n): ")
                 if confirmation.lower() == "y":
                     worksheet.delete_rows(item_index)
+                    clear()
                     print(Fore.GREEN+f"Item '{items_list[item_index - 1]}' deleted successfully.")
                 else:
                     clear()
@@ -305,12 +324,14 @@ def menu_if_no_list_exists():
     print("----------------------------------------------\n")    
     print("# 1. Create a new packing list")
     print("# 2. Back to main menu\n\n")
-    choice = input("What do you want to do?\n")
+    choice = input(Fore.CYAN+"What do you want to do?\n")
             
     if choice == "1":
+        clear()
         create_a_new_packing_list()
           
     elif choice == "2":
+        clear()
         main_menu()
          
     else:
