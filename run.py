@@ -371,18 +371,16 @@ def clear():
 
 
 def main_menu(): 
-    print("**********************************************")
-    print("*                                            *")
-    print("*    Welcome to your packing list planner    *")
-    print("*                                            *")
-    print("* Please select one of the following options *")
-    print("* ------------------------------------------ *")
-    print("* 1. Add a new packing list                  *")
-    print("* 2. Delete a packing list                   *") 
-    print("* 3. Show all packing lists                  *")
-    print("* 4. Edit existing packing list              *")
-    print("* 5. Quit                                    *")
-    print("**********************************************\n")
+
+    print(Fore.YELLOW+"Welcome to your packing list planner\n")
+    print(Fore.CYAN+"Please select one of the following options")
+    print("------------------------------------------")
+    print("1. Add a new packing list")
+    print("2. Delete a packing list") 
+    print("3. Show all packing lists")
+    print("4. Edit existing packing list")
+    print("5. Quit\n")
+
     choice = input(Fore.CYAN+"Enter your choice:                             \n")
 
     if choice == "1":
