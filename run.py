@@ -84,8 +84,10 @@ def createNewPackingList():
 
         if choice == "1":
             createNewPackingList()
+            break
         elif choice == "2":
             editExistingPackingList()
+            break
         elif choice == "3":
             clear()
             mainMenu()
@@ -94,14 +96,26 @@ def createNewPackingList():
             print(Fore.RED + f"{choice} was not an option, please try again")
             
 
-"""
-This function displays all the items 
-in the selected packing list
-"""
+
 def check_list(worksheet):
+    """
+    This function displays all the items 
+    in the selected packing list
+    
+    ------------------------------------
+        
+    This is the format that the
+    items will be shown in the list.
+        itemname | Packed: No
+    Since all items that are added
+    to the list aren´t packed since
+    the user changing status on the 
+    item in another function.
+    
+    """
     items_list = worksheet.col_values(1)
     packed_list = worksheet.col_values(2)
-    print("\n\n\n\n")
+    clear()
     if len(items_list) == 0:
         print("You have no items in this packing list!\n\n")
         while True:
@@ -112,27 +126,24 @@ def check_list(worksheet):
             choice = input("What do you want to do?\n")
             if choice == "1":
                 addNewItem(worksheet)
+                break
             elif choice == "2":
                 allPackingLists()
+                break
             elif choice == "3":
+                clear()
                 mainMenu()
+                break
             else:
                 print(f"{choice} was not an option, please try again\n\n\n")
     else:
         print("Here are your items to pack:")
         print("----------------------------")
         
-        """
-        This is the format that the
-        items will be shown in the list.
-        Since all items that are added
-        to the list aren´t packed since
-        the user changing status on the 
-        item in another function.
-        """
+
         for items, packed in zip(items_list, packed_list):
             print(f"{items.capitalize()}, Is it packed?: {packed}")
-        print("\n\n")
+        
         
         editItemsOnExistingList(worksheet)
 
