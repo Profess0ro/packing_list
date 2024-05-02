@@ -338,7 +338,7 @@ def delete_packing_lists():
 
 def quit():
     """
-    Saying goodbye to the user if they want to quit
+    Saying goodbye to the user when they quit.
     """
     clear()
     print(Fore.YELLOW + "Goodbye and have a nice trip! :)")
