@@ -144,7 +144,7 @@ def create_a_new_packing_list():
         print("1. Create a new packing list")
         print(f"2. Add items to packing list '{new_worksheet_name}'")
         print("3. Go back to main menu\n\n")
-        choice = input("What do you want to do now? ")
+        choice = input("What do you want to do now? \n")
 
         if choice == "1":
             print("\n")
@@ -201,7 +201,7 @@ def check_list(worksheet):
         print("----------------------------")
 
         for items, packed in zip(items_list, packed_list):
-            print(Fore.BLUE+f"{items.capitalize()}, Packed?: {packed}")
+            print(Fore.YELLOW+f"{items.capitalize()}, Packed?: {packed}")
         edit_item_on_packing_list_menu(worksheet)
 
 
