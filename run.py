@@ -142,7 +142,8 @@ def create_a_new_packing_list():
         print("----------------------------------------------\n")
         print("1. Create a new packing list")
         print(f"2. Add items to packing list '{new_worksheet_name}'")
-        print("3. Go back to main menu\n\n")
+        print("3. Delete a packing list")
+        print("4. Go back to main menu\n\n")
         choice = input("What do you want to do now? \n")
 
         if choice == "1":
@@ -151,6 +152,8 @@ def create_a_new_packing_list():
         elif choice == "2":
             add_new_item_to_packing_list(new_worksheet)
         elif choice == "3":
+            delete_packing_lists()
+        elif choice == "4":
             clear()
             main_menu()
             break
@@ -205,7 +208,8 @@ def add_new_item_to_packing_list(worksheet):
     """
     clear()
     while True:
-        print(Fore.YELLOW+f"Adding items to '{worksheet.title}'")
+        print(Fore.YELLOW+"Adding items to")
+        print(f"'{worksheet.title}'")
         print(Fore.CYAN + "(max 30 characters and no special characters)")
         item = input("Enter the item you want to add: \n")
         if (item.replace(" ", "").isalpha() and
@@ -393,16 +397,17 @@ def delete_packing_lists():
     """
     clear()
     fetch_all_lists()
-    title = worksheets.title
     choice = int(input("Enter the list # you want to delete: "))
 
     if 0 < choice <= len(worksheets) - 1:
+        removed_title = worksheets[choice].title
         SPREADSHEET.del_worksheet(worksheets[choice])
         clear()
-        print(Fore.GREEN+f"\n {title} was removed")
+        print(Fore.GREEN + f"\n'{removed_title}' was removed")
     else:
         print(Fore.RED+f"\n{choice} was not an option.")
         print("Please enter a valid number.")
+    all_packing_lists()
 
 
 def quit():
