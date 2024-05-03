@@ -58,15 +58,35 @@ def all_packing_lists():
     """
     worksheets = SPREADSHEET.worksheets()
     clear()
-    if len(worksheets) >= 1:
+    if len(worksheets) > 1:
         print("These are your current packing lists: \n")
 
-        for index, worksheet in enumerate(worksheets[0:1], start=1):
+        for index, worksheet in enumerate(worksheets[1:], start=1):
             print(f"# {index} - {worksheet.title.capitalize()}")
-            edit_packing_list_menu()
     else:
         print(Fore.RED+"You have no packing lists.")
         menu_if_no_list_exists()
+    print("\n")
+    print("-------------------------------------")
+    print("# 1. Add another packing list")
+    print("# 2. Delete a packing list")
+    print("# 3. Edit a packing list")
+    print("# 4. Go back to the main menu")
+    choice = input(Fore.CYAN+"What do you want to do now?\n")
+    if choice == "1":
+        clear()
+        create_a_new_packing_list()
+    elif choice == "2":
+        clear()
+        delete_packing_lists()
+    elif choice == "3":
+        clear()
+        edit_existing_packing_list_menu()
+    elif choice == "4":
+        clear()
+        main_menu()
+    else:
+        print(Fore.RED+f"{choice} was not a option. Try again")
 
 
 def create_a_new_packing_list():
@@ -110,13 +130,11 @@ def create_a_new_packing_list():
                 break
         elif len(new_worksheet_name) > 20:
             clear()
-            print("\n")
             print(Fore.RED + "It´s more than 20 characters in:")
             print(f"'{new_worksheet_name}'")
             print(Fore.RED + "Please try again.\n")
         else:
             clear()
-            print("\n")
             print(Fore.RED + "Please use alphabetic characters only.\n")
             print(f"'{new_worksheet_name}' is invalid.")
             print(Fore.RED + "Please try again.\n")
@@ -184,7 +202,6 @@ def check_list(worksheet):
 
         for items, packed in zip(items_list, packed_list):
             print(Fore.BLUE+f"{items.capitalize()}, Packed?: {packed}")
-            print("\n")
         edit_item_on_packing_list_menu(worksheet)
 
 
@@ -231,13 +248,13 @@ def delete_item_on_packing_list(worksheet):
             print(Fore.RESET)
             if 1 <= item_index <= len(items_list):
                 print(Fore.YELLOW + "Are you sure you want to delete:")
-                confirmation = input(f"'{items_list[item_index - 1]}'? (y/n):\n")
-                if confirmation.lower() == "y":
+                confirm = input(f"'{items_list[item_index - 1]}'? (y/n):\n")
+                if confirm.lower() == "y":
                     worksheet.delete_rows(item_index)
                     clear()
                     print(Fore.GREEN+f"Item '{items_list[item_index - 1]}'")
                     print(Fore.GREEN+"deleted successfully.")
-                elif confirmation.lower() == "n":
+                elif confirm.lower() == "n":
                     clear()
                     print("Deletion canceled.")
                 return
@@ -308,6 +325,31 @@ def edit_item_on_packing_list_menu(worksheet):
         main_menu()
     else:
         print("Invalid input. Please try again.")
+
+
+def edit_existing_packing_list_menu():
+    worksheets = SPREADSHEET.worksheets()
+    if len(worksheets) > 1:
+        print("These are your current packing lists: \n")
+    for index, worksheet in enumerate(worksheets[1:], start=1):
+        print(f"# {index} - {worksheet.title.capitalize()}")
+    choice = input("Enter the list # you want to work on: \n")
+    try:
+        choice_index = int(choice)
+        if 0 < choice_index <= len(worksheets) - 1:
+            selected_worksheet = worksheets[choice_index]
+            check_list(selected_worksheet)
+            edit_item_on_packing_list_menu(selected_worksheet)
+        else:
+            print("\n\n")
+            print(Fore.RED+f"{choice} was not an option.")
+            print("Please enter a valid option.")
+            edit_existing_packing_list()
+    except ValueError:
+        print("\n\n")
+        print(Fore.RED+f"{choice} was not an option.")
+        print("Please enter a valid option.")
+        edit_existing_packing_list()
 
 
 def edit_existing_packing_list():
@@ -384,19 +426,21 @@ def delete_packing_lists():
         print("These are your current packing lists: \n")
 
         for index, worksheet in enumerate(worksheets[1:], start=1):
-            print(f"# {index} - {worksheet.title.capitalize()}\n\n")
+            print(f"# {index} - {worksheet.title.capitalize()}")
             title = worksheet.title
         choice = int(input("Enter the list # you want to delete: "))
 
         if 0 < choice <= len(worksheets) - 1:
             SPREADSHEET.del_worksheet(worksheets[choice])
-            print(f"\n\n {title} was removed")
+            clear()
+            print(Fore.GREEN+f"\n {title} was removed")
         else:
             print(Fore.RED+f"\n{choice} was not an option.")
             print("Please enter a valid number.")
     else:
         print("You have no packing lists.")
         menu_if_no_list_exists()
+    all_packing_lists()
 
 
 def quit():
