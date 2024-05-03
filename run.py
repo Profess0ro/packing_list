@@ -16,7 +16,7 @@ CREDS = Credentials.from_service_account_file("creds.json")
 SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SPREADSHEET = GSPREAD_CLIENT.open("packing_list_app")
-
+worksheets = SPREADSHEET.worksheets()
 
 def edit_packing_list_menu():
     while True:
@@ -39,24 +39,15 @@ def edit_packing_list_menu():
             print(Fore.RED + f"{choice} was not an option, please try again")
 
 
-def all_packing_lists():
+def fetch_all_lists():
     """
-    This function displaying all
-    packing lists that has been
-    created by the user
-    ----------------------
-    Since you can´t delete all worksheets
-    this function will not include
-    the first worksheet and start
-    counting the list from 1 instead of 2
-    ----------------------
-    If there are no packing list to be shown
-    there will be 2 options for the user
-    either to create a packing list or
-    go back to the main menu
+    This function will collect all
+    packing lists that exists.
 
+    If there are no lists created
+    menu_if_no_list_exists()
+    will be called
     """
-    worksheets = SPREADSHEET.worksheets()
     clear()
     if len(worksheets) > 1:
         print("These are your current packing lists: \n")
@@ -66,6 +57,13 @@ def all_packing_lists():
     else:
         print(Fore.RED+"You have no packing lists.")
         menu_if_no_list_exists()
+
+
+def all_packing_lists():
+    """
+
+    """
+    fetch_all_lists()
     print("\n")
     print("-------------------------------------")
     print("# 1. Add another packing list")
@@ -159,26 +157,25 @@ def create_a_new_packing_list():
             print(Fore.RED + f"{choice} was not an option, please try again")
 
 
-def check_list(worksheet):
-    """
-    This function displays all the items
-    in the selected packing list
-    ------------------------------------
-    This is the format that the
-    items will be shown in the list.
-        itemname | Packed: No
-    Since all items that are added
-    to the list aren´t packed since
-    the user changing status on the
-    item in another function.
-    """
+def fetch_all_items(worksheet):
     items_list = worksheet.col_values(1)
     packed_list = worksheet.col_values(2)
     clear()
     if len(items_list) == 0:
         print(Fore.RED + "You have no items in")
         print(f"'{worksheet.title}'!\n\n")
-        while True:
+    else:
+        print(Fore.YELLOW+"Here are your items in")
+        print(f"{worksheet.title}:")
+        print("----------------------------")
+        for items, packed in zip(items_list, packed_list):
+            print(Fore.YELLOW+f"{items.capitalize()}, Packed?: {packed}")
+
+
+def check_list(worksheet):
+
+    fetch_all_items(worksheet)
+    while True:
             print(Fore.CYAN+"Here are some options for you:\n")
             print("1. Add an item to this list")
             print("2. Edit another packing list")
@@ -195,14 +192,6 @@ def check_list(worksheet):
                 break
             else:
                 print(f"{choice} was not an option, please try again\n\n\n")
-    else:
-        print(Fore.YELLOW+"Here are your items in")
-        print(f"{worksheet.title}:")
-        print("----------------------------")
-
-        for items, packed in zip(items_list, packed_list):
-            print(Fore.YELLOW+f"{items.capitalize()}, Packed?: {packed}")
-        edit_item_on_packing_list_menu(worksheet)
 
 
 def add_new_item_to_packing_list(worksheet):
@@ -214,7 +203,6 @@ def add_new_item_to_packing_list(worksheet):
     or not
     """
     clear()
-
     while True:
         print(Fore.YELLOW+f"Adding items to '{worksheet.title}'")
         print(Fore.CYAN + "(max 30 characters and no special characters)")
@@ -230,6 +218,7 @@ def add_new_item_to_packing_list(worksheet):
 
 
 def delete_item_on_packing_list(worksheet):
+    """
     items_list = worksheet.col_values(1)
     clear()
     if len(items_list) == 0:
@@ -240,7 +229,9 @@ def delete_item_on_packing_list(worksheet):
     print("--------------------------------------")
     for index, item in enumerate(items_list, start=1):
         print(Fore.BLUE+f"{index}. {item.capitalize()}")
-
+    """
+    items_list = worksheet.col_values(1)
+    fetch_all_items(worksheet)
     while True:
         try:
             print("\n\n")
@@ -359,38 +350,20 @@ def edit_existing_packing_list():
     edited.
     """
     clear()
-    worksheets = SPREADSHEET.worksheets()
-    if len(worksheets) > 1:
-        print("These are your current packing lists: \n")
-        for index, worksheet in enumerate(worksheets[1:], start=1):
-            print(f"# {index} - {worksheet.title.capitalize()}")
-
-        choice = input("Enter the list # you want to work on: \n")
-        try:
-            choice_index = int(choice)
-            if 0 < choice_index <= len(worksheets) - 1:
-                selected_worksheet = worksheets[choice_index]
-                check_list(selected_worksheet)
-                edit_item_on_packing_list_menu(selected_worksheet)
-            else:
-                print("\n\n")
-                print(Fore.RED+f"{choice} was not an option.")
-                print("Please enter a valid option.")
-                edit_existing_packing_list()
-        except ValueError:
-            print("\n\n")
-            print(Fore.RED+f"{choice} was not an option.")
-            print("Please enter a valid option.")
-            edit_existing_packing_list()
-
-    elif len(worksheets) == 2:
-        print("You have only one packing list: \n")
-        print(f"{worksheets[1].title.capitalize()}")
-        selected_worksheet = worksheets[1]
-
+    fetch_all_lists()
+    choice = input("Enter the list # you want to work on: \n")
+    choice_index = int(choice)
+    if 0 < choice_index <= len(worksheets) - 1:
+            selected_worksheet = worksheets[choice_index]
+            check_list(selected_worksheet)
+            edit_item_on_packing_list_menu(selected_worksheet)
     else:
-        print("\n\nThere is no packing list to be edited...\n\n")
-        menu_if_no_list_exists()
+        print("\n\n")
+        print(Fore.RED+f"{choice} was not an option.")
+        print("Please enter a valid option.")
+        edit_existing_packing_list()
+
+
 
 
 def menu_if_no_list_exists():
@@ -420,27 +393,20 @@ def delete_packing_lists():
     existing packing list
     """
     clear()
-    worksheets = SPREADSHEET.worksheets()
+    
 
-    if len(worksheets) > 1:
-        print("These are your current packing lists: \n")
+    fetch_all_lists()
+    title = worksheets.title
+    choice = int(input("Enter the list # you want to delete: "))
 
-        for index, worksheet in enumerate(worksheets[1:], start=1):
-            print(f"# {index} - {worksheet.title.capitalize()}")
-            title = worksheet.title
-        choice = int(input("Enter the list # you want to delete: "))
-
-        if 0 < choice <= len(worksheets) - 1:
+    if 0 < choice <= len(worksheets) - 1:
             SPREADSHEET.del_worksheet(worksheets[choice])
             clear()
             print(Fore.GREEN+f"\n {title} was removed")
-        else:
+    else:
             print(Fore.RED+f"\n{choice} was not an option.")
             print("Please enter a valid number.")
-    else:
-        print("You have no packing lists.")
-        menu_if_no_list_exists()
-    all_packing_lists()
+
 
 
 def quit():
