@@ -48,9 +48,18 @@ These flowchart was created before I started and are the blueprints I´ve worked
 - When you created a new packing list and wanted to delete a packing list directly after, it didn´t showed the newly created packing list.<br>- **Solution:** Update the worksheet list with "global worksheets" in the create new packing list function.
 - If you typed a alphabetic character when the choice was a digit and vice versa, it did´t gave a message that it was a wrong choice.<br>- **Solution:** Added `if ____.isdigit/.isalpha` to the check if choice are made with right input.
 - If you wanted to delete an item even if there wasn´t any in the list, the question which # to delete still showed up.<br>- **Solution:** Added `if not items_list:` to see if there are any items added to the list.
-# Credits
+# Resources
 
 - https://www.youtube.com/watch?v=aEIHZDv_23U - For basic structure of this application.<br>
 - https://www.w3schools.com/ - Learning the meaning of the python codes.<br>
 - https://developers.google.com/sheets/api/guides/concepts - How to work with spreadsheets/worksheets in python<br>
-- https://www.flake8rules.com/ - Helping me with errors in "Python Linter".
+- https://pep8ci.herokuapp.com/# - Validation of the python code.<br>
+- https://www.flake8rules.com/ - Helping me with errors in "Python Linter".<br>
+- https://www.geeksforgeeks.org/clear-screen-python/ - How to use the clear function<br>
+- https://pypi.org/project/colorama/ - Colorama library<br>
+- https://medium.com/@adheremo65/what-is-the-main-block-in-python-if-name-main-d9f7410ef2f2#:~:text=Why%20do%20we%20need%20to,a%20module%20into%20another%20script - How to use main block function<br>
+- https://www.tutorialspoint.com/python/python_strings.htm - How to use `.isdigit`and `.isalpha`<br>
+
+# Credits 
+
+- Rohit Sharma - My mentor
