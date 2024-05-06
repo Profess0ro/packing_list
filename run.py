@@ -183,7 +183,7 @@ def fetch_all_items(worksheet):
         print("----------------------------")
         for index, (item, packed) in enumerate(zip(items_list, packed_list),
                                                start=1):
-            print(f"# {index}: {item.capitalize()}, Packed?: {packed}\n")
+            print(f"# {index}: {item.capitalize()}, Packed?: {packed}")
 
 
 def check_list(worksheet):
@@ -240,9 +240,10 @@ def delete_item_on_packing_list(worksheet):
                 elif confirm.lower() == "n":
                     clear()
                     print("Deletion canceled.")
-                return
+                else:
+                    print(Fore.RED+f"{confirm} invalid, try again")
             else:
-                print(Fore.RED+"Invalid item #. Please enter a valid number.")
+                    print(Fore.RED+"Invalid item #. Please enter a valid number.")
         except ValueError:
             print(Fore.RED+"Invalid input. Please enter a number.")
         check_list(worksheet)
@@ -280,7 +281,7 @@ def edit_item_on_packing_list_menu(worksheet):
     or list the items in the selected
     packing list
     """
-
+    print("\n")
     print(Fore.CYAN+"What do you want to do with this list?")
     print("------------------------------------------")
     print("1. Add a new item")
@@ -340,7 +341,7 @@ def edit_existing_packing_list():
     """
     
     fetch_all_lists(worksheets)
-    choice = input("Enter the list # you want to work on: \n")
+    choice = input(Fore.CYAN + "Enter the list # you want to work on: \n")
     if choice.isdigit():
         choice_index = int(choice)
         if 0 < choice_index <= len(worksheets) - 1:
