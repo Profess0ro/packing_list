@@ -340,6 +340,7 @@ def edit_existing_packing_list():
     """
     
     fetch_all_lists(worksheets)
+    print(Fore.RED + "Enter 'exit' to go back to main menu")
     choice = input(Fore.CYAN + "Enter the list # you want to work on: \n")
     if choice.isdigit():
         choice_index = int(choice)
@@ -352,6 +353,9 @@ def edit_existing_packing_list():
             print(Fore.RED+f"{choice} was not an option.")
             print("Please enter a valid option.")
             edit_existing_packing_list()
+    elif choice.lower() == "exit":
+        clear()
+        main_menu()
     else:
         clear()
         print(Fore.RED+f"{choice} was not an option.")
