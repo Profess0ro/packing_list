@@ -242,7 +242,7 @@ def delete_item_on_packing_list(worksheet):
                     print(Fore.RED + f"{confirm} invalid")
                     continue
             else:
-                print(Fore.RED + "Invalid item #. Please enter a valid number.")
+                print(Fore.RED+"Invalid item #. Please enter a valid number.")
         else:
             print(Fore.RED + "Invalid input. Please enter a number.")
         check_list(worksheet)
