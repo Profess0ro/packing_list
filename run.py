@@ -287,14 +287,16 @@ def change_status_on_item(worksheet):
                 print(Fore.RED + "Invalid #. Please try again.")
         else:
             print(Fore.RED + "Invalid input. Please enter a number.")
-    item = item_index.title()
+    item = items_list[item_index - 1]
     packed_status = packed_list[item_index - 1]
     new_status = "Yes" if packed_status == "No" else "No"
     worksheet.update_cell(item_index, 2, new_status)
     if new_status == "Yes":
-        print(Fore.GREEN + f"You have packed {item}\n")
+        print(Fore.GREEN + "You have packed")
+        print(f"'{item}'")
     else:
-        print(Fore.RED + f"You have unpacked {item}\n")
+        print(Fore.RED + "You have unpacked")
+        print(f"'{item}'")
     check_list(worksheet)
 
 
