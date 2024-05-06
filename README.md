@@ -32,6 +32,17 @@ These flowchart was created before I started and are the blueprints I´ve worked
 <img src="readme/create_packing_list5.png">
 <img src="readme/create_packing_list4.png">
 
+`delete a packing list`<br>
+| Feature | Expected Outcome | Testing Performed | Result | Pass/Fail |
+| --- | --- | --- | --- | --- |
+| Delete an existing packing list | Delete chosen # list | Chosed to delete # 2 | The correct packing list was deleted | Pass |
+| Trying to delete a # that doesn´t exist | A message shall tell me that # doesn´t exist | Tried to delete # 0 | Message told me that # 0 was not an option | Pass |
+| Deleting the last existing packing list | Menu shall shown that no packing list exists | Deleted the last packing list | Message told me there are no more packing lists and menu with options shown | Pass |
+<img src="readme/delete_packing_list1.png">
+<img src="readme/delete_packing_list2.png">
+<img src="readme/delete_packing_list3.png">
+<img src="readme/delete_packing_list4.png">
+
 # Bugs
 ### Bugs encountered when testing
 - When you created a new packing list and wanted to delete a packing list directly after, it didn´t showed the newly created packing list.<br>- **Solution:** Update the worksheet list with "global worksheets" in the create new packing list function.
