@@ -274,30 +274,47 @@ def delete_item_on_packing_list(worksheet):
 
 
 def change_status_on_item(worksheet):
+    """
+    This function will change
+    the packing status on
+    the items that are in
+    the packing lists.
+
+    It will check:
+    - if a correct index # is typed
+    - if a digit is typed
+    - if 'exit is typed it will go back
+    """
+    clear()
     fetch_all_items(worksheet)
     items_list = worksheet.col_values(1)
     packed_list = worksheet.col_values(2)
     while True:
-        item_index = input(Fore.BLUE + "Enter # of the item to change:\n")
-        if item_index.isdigit():
-            item_index = int(item_index)
+        print(Fore.RED + "Enter 'exit' to go back")
+        item_index_input = input(Fore.BLUE + "Enter # of the item to change:\n")
+        if item_index_input.lower() == "exit":
+            check_list(worksheet)
+        elif item_index_input.isdigit():
+            item_index = int(item_index_input)
             if 1 <= item_index <= len(items_list):
-                break
+                item = items_list[item_index - 1]
+                packed_status = packed_list[item_index - 1]
+                new_status = "Yes" if packed_status == "No" else "No"
+                worksheet.update_cell(item_index, 2, new_status)
+                if new_status == "Yes":
+                    clear()
+                    print(Fore.GREEN + "You have packed")
+                    print(f"'{item}'")
+                else:
+                    clear()
+                    print(Fore.GREEN + "You have unpacked")
+                    print(f"'{item}'")
+                check_list(worksheet)
+                return
             else:
                 print(Fore.RED + "Invalid #. Please try again.")
         else:
             print(Fore.RED + "Invalid input. Please enter a number.")
-    item = items_list[item_index - 1]
-    packed_status = packed_list[item_index - 1]
-    new_status = "Yes" if packed_status == "No" else "No"
-    worksheet.update_cell(item_index, 2, new_status)
-    if new_status == "Yes":
-        print(Fore.GREEN + "You have packed")
-        print(f"'{item}'")
-    else:
-        print(Fore.RED + "You have unpacked")
-        print(f"'{item}'")
-    check_list(worksheet)
 
 
 def edit_item_on_packing_list_menu(worksheet):
@@ -312,11 +329,11 @@ def edit_item_on_packing_list_menu(worksheet):
     print("------------------------------------------")
     print("1. Add a new item")
     print("2. Delete an item")
-    print("3. Change status on item")
+    print("3. Change packing status on item")
     print("4. Edit another packing list")
     print("5. Quit to main menu\n\n")
 
-    choice = input(Fore.CYAN+"Enter your choice: ")
+    choice = input(Fore.CYAN+"Enter your choice: \n")
 
     if choice == "1":
         add_new_item_to_packing_list(worksheet)
