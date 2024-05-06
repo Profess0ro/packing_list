@@ -428,6 +428,10 @@ def delete_packing_lists(worksheets):
     """
     This function will delete an
     existing packing list
+    First it will check if
+    there are any lists created
+    else show a menu with
+    options to go further
     """
 
     fetch_all_lists(worksheets)
@@ -483,7 +487,11 @@ def clear():
 
 
 def main_menu():
-
+    """
+    This is the main menu and
+    what options you can
+    choose from here.
+    """
     print(Fore.YELLOW+"Welcome to your packing list planner\n")
     print(Fore.CYAN+"Please select one of the following options")
     print("------------------------------------------")
