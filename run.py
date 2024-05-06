@@ -42,7 +42,7 @@ def all_packing_lists():
     """
     When user wants to list all
     packing lists this menu will
-    be displayed with options 
+    be displayed with options
     to go further
     """
     clear()
@@ -243,7 +243,7 @@ def delete_item_on_packing_list(worksheet):
     show a message to try again.
     If a digit is typed a question
     will be displayed if they are
-    sure to delete or not. 
+    sure to delete or not.
     """
 
     items_list = worksheet.col_values(1)
@@ -301,7 +301,8 @@ def change_status_on_item(worksheet):
     packed_list = worksheet.col_values(2)
     while True:
         print(Fore.RED + "Enter 'exit' to go back")
-        item_index_input = input(Fore.BLUE + "Enter # of the item to change:\n")
+        item_index_input = input(Fore.BLUE +
+                                 "Enter # of the item to change:\n")
         if item_index_input.lower() == "exit":
             check_list(worksheet)
         elif item_index_input.isdigit():
@@ -334,7 +335,7 @@ def edit_item_on_packing_list_menu(worksheet):
     whether to add, delete
     or change packing status
     on the items in the selected
-    packing list. 
+    packing list.
     """
     print("\n")
     print(Fore.CYAN+"What do you want to do with this list?")
@@ -372,7 +373,6 @@ def edit_existing_packing_list_menu():
     This function will first check
     if there are any packing lists
     created else show a message
-    
     """
     worksheets = SPREADSHEET.worksheets()
     if len(worksheets) > 1:
