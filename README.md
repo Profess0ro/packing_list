@@ -22,6 +22,7 @@ https://docs.google.com/spreadsheets/d/1AV-nZAvPqpJ5bxexeTKuvK2YJYU36GT0OuKhUHCS
 ### Bugs encountered when testing
 - When you created a new packing list and wanted to delete a packing list directly after, it didn´t showed the newly created packing list.<br>- **Solution:** Update the worksheet list with "global worksheets" in the create new packing list function.
 - If you typed a alphabetic character when the choice was a digit and vice versa, it did´t gave a message that it was a wrong choice.<br>- **Solution:** Added if ____.isdigit/.isalpha to the check if choice are made with right input.
+- If you wanted to delete an item even if there wasn´t any in the list, the question which # to delete showed up.<br>- **Solution:** Added `if not items_list:` to see if there are any items added to the list.
 # Credits
 
 - https://www.youtube.com/watch?v=aEIHZDv_23U - For basic structure of this application<br>

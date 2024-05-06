@@ -245,7 +245,12 @@ def delete_item_on_packing_list(worksheet):
     will be displayed if they are
     sure to delete or not. 
     """
+
     items_list = worksheet.col_values(1)
+    if not items_list:
+        print(Fore.RED + "There are no items to delete.")
+        check_list(worksheet)
+        return
     fetch_all_items(worksheet)
     while True:
         print("\n")
