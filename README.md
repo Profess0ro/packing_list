@@ -29,6 +29,7 @@ These flowchart was created before I started and are the blueprints I´ve worked
 <img src="readme/create_packing_list1.png">
 <img src="readme/create_packing_list2.png">
 <img src="readme/create_packing_list3.png">
+<img src="readme/create_packing_list5.png">
 <img src="readme/create_packing_list4.png">
 
 # Bugs
