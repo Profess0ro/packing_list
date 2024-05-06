@@ -173,7 +173,6 @@ def create_a_new_packing_list():
 def fetch_all_items(worksheet):
     items_list = worksheet.col_values(1)
     packed_list = worksheet.col_values(2)
-    clear()
     if len(items_list) == 0:
         print(Fore.RED + "You have no items in")
         print(f"'{worksheet.title}'!\n\n")
@@ -187,7 +186,6 @@ def fetch_all_items(worksheet):
 
 
 def check_list(worksheet):
-
     fetch_all_items(worksheet)
     edit_item_on_packing_list_menu(worksheet)
 
@@ -225,27 +223,28 @@ def delete_item_on_packing_list(worksheet):
     items_list = worksheet.col_values(1)
     fetch_all_items(worksheet)
     while True:
-        try:
-            print("\n")
-            item_index = int(input(Fore.CYAN + "Which item # to delete: "))
-            print(Fore.RESET)
+        print("\n")
+        item_index_input = input(Fore.CYAN + "Which item # to delete: ")
+        if item_index_input.isdigit():
+            item_index = int(item_index_input)
             if 1 <= item_index <= len(items_list):
                 print(Fore.YELLOW + "Are you sure you want to delete:")
                 confirm = input(f"'{items_list[item_index - 1]}'? (y/n):\n")
                 if confirm.lower() == "y":
                     worksheet.delete_rows(item_index)
                     clear()
-                    print(Fore.GREEN+f"Item '{items_list[item_index - 1]}'")
-                    print(Fore.GREEN+"deleted successfully.")
+                    print(Fore.GREEN + f"Item '{items_list[item_index - 1]}'")
+                    print(Fore.GREEN + "deleted successfully.")
                 elif confirm.lower() == "n":
                     clear()
                     print("Deletion canceled.")
                 else:
-                    print(Fore.RED+f"{confirm} invalid, try again")
+                    print(Fore.RED + f"{confirm} invalid")
+                    continue
             else:
-                    print(Fore.RED+"Invalid item #. Please enter a valid number.")
-        except ValueError:
-            print(Fore.RED+"Invalid input. Please enter a number.")
+                print(Fore.RED + "Invalid item #. Please enter a valid number.")
+        else:
+            print(Fore.RED + "Invalid input. Please enter a number.")
         check_list(worksheet)
 
 
