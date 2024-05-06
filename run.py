@@ -76,14 +76,17 @@ def create_a_new_packing_list():
     list (worksheet) in the spreadsheet
     that is connected to this app.
 
-    Option to exit this exectution
-    if 'exit' is typed.
-
     When created a new packing list
     the global worksheets
     will update and the user
     will get options
     on what to do next.
+
+    When the user typed in a name
+    it checks if:
+    - the title already exists
+    - it´s only alphabetic characters
+    - 'exit' is typed to go back
     """
     clear()
     print(Fore.YELLOW + "Oh! So you are planning to travel again\n")
@@ -253,9 +256,9 @@ def delete_item_on_packing_list(worksheet):
                     print(Fore.RED + f"{confirm} invalid")
                     continue
             else:
-                print(Fore.RED+"Invalid item #. Please enter a valid number.")
+                print(Fore.RED+f"{item_index_input}. Please enter a valid #.")
         else:
-            print(Fore.RED + "Invalid input. Please enter a number.")
+            print(Fore.RED + f"{item_index_input}. Please enter a valid #.")
         check_list(worksheet)
 
 
