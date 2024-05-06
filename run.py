@@ -441,7 +441,7 @@ def delete_packing_lists(worksheets):
         return
 
     while len(worksheets):
-        print(Fore.YELLOW + "Enter 'exit' to go back to main menu")
+        print(Fore.RED + "Enter 'exit' to go back to main menu")
         choice = input("Enter the list # you want to delete: ")
 
         if choice.isdigit() and 0 < int(choice) <= len(worksheets) - 1:
