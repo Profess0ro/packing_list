@@ -254,8 +254,12 @@ def delete_item_on_packing_list(worksheet):
     fetch_all_items(worksheet)
     while True:
         print("\n")
-        item_index_input = input(Fore.CYAN + "Which item # to delete: ")
-        if item_index_input.isdigit():
+        print(Fore.RED + "Enter 'exit' to go back")
+        item_index_input = input(Fore.CYAN + "Which item # to delete: \n")
+        if item_index_input.lower() == "exit":
+            clear()
+            check_list(worksheet)
+        elif item_index_input.isdigit():
             item_index = int(item_index_input)
             if 1 <= item_index <= len(items_list):
                 print(Fore.YELLOW + "Are you sure you want to delete:")
@@ -269,6 +273,7 @@ def delete_item_on_packing_list(worksheet):
                     clear()
                     print("Deletion canceled.")
                 else:
+                    clear()
                     print(Fore.RED + f"{confirm} invalid")
                     continue
             else:
