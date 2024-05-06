@@ -319,10 +319,12 @@ def change_status_on_item(worksheet):
 
 def edit_item_on_packing_list_menu(worksheet):
     """
-    This function lets the user
-    decide whether to add, delete
-    or list the items in the selected
-    packing list
+    This function shows a menu
+    to lets the user decide
+    whether to add, delete
+    or change packing status
+    on the items in the selected
+    packing list. 
     """
     print("\n")
     print(Fore.CYAN+"What do you want to do with this list?")
@@ -336,22 +338,32 @@ def edit_item_on_packing_list_menu(worksheet):
     choice = input(Fore.CYAN+"Enter your choice: \n")
 
     if choice == "1":
+        clear()
         add_new_item_to_packing_list(worksheet)
     elif choice == "2":
+        clear()
         delete_item_on_packing_list(worksheet)
     elif choice == "3":
+        clear()
         change_status_on_item(worksheet)
     elif choice == "4":
+        clear()
         edit_existing_packing_list_menu()
     elif choice == "5":
         clear()
         main_menu()
     else:
-        print("Invalid input. Please try again.")
+        print(f"{choice} is not a valid input. Please try again.")
         edit_item_on_packing_list_menu()
 
 
 def edit_existing_packing_list_menu():
+    """
+    This function will first check
+    if there are any packing lists
+    created else show a message
+    
+    """
     worksheets = SPREADSHEET.worksheets()
     if len(worksheets) > 1:
         print("These are your current packing lists: \n")
