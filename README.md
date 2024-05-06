@@ -28,3 +28,4 @@ https://docs.google.com/spreadsheets/d/1AV-nZAvPqpJ5bxexeTKuvK2YJYU36GT0OuKhUHCS
 - https://www.youtube.com/watch?v=aEIHZDv_23U - For basic structure of this application<br>
 - https://www.w3schools.com/ - For some basic codes
 - https://developers.google.com/sheets/api/guides/concepts - How to work with spreadsheets/worksheets in python
+- https://www.flake8rules.com/ - Helping me with errors in "Python Linter".
