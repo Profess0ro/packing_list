@@ -25,7 +25,7 @@ These flowchart was created before I started and are the blueprints I´ve worked
 - If you wanted to delete an item even if there wasn´t any in the list, the question which # to delete still showed up.<br>- **Solution:** Added `if not items_list:` to see if there are any items added to the list.
 # Credits
 
-- https://www.youtube.com/watch?v=aEIHZDv_23U - For basic structure of this application<br>
-- https://www.w3schools.com/ - For some basic codes
-- https://developers.google.com/sheets/api/guides/concepts - How to work with spreadsheets/worksheets in python
+- https://www.youtube.com/watch?v=aEIHZDv_23U - For basic structure of this application.<br>
+- https://www.w3schools.com/ - Learning the meaning of the python codes.<br>
+- https://developers.google.com/sheets/api/guides/concepts - How to work with spreadsheets/worksheets in python<br>
 - https://www.flake8rules.com/ - Helping me with errors in "Python Linter".
