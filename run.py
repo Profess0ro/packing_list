@@ -138,8 +138,8 @@ def create_a_new_packing_list():
             print(f"'{new_worksheet_name}' is invalid.")
             print(Fore.RED + "Please try again.\n")
         
-        global worksheets
-        worksheets = SPREADSHEET.worksheets()
+    global worksheets
+    worksheets = SPREADSHEET.worksheets()
 
     while True:
         print("----------------------------------------------\n")
