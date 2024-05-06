@@ -31,6 +31,7 @@ def edit_packing_list_menu():
             print("\n")
             create_a_new_packing_list()
         elif choice == "2":
+            clear()
             edit_existing_packing_list()
         elif choice == "3":
             clear()
@@ -49,7 +50,6 @@ def fetch_all_lists(worksheets):
     menu_if_no_list_exists()
     will be called
     """
-    clear()
     if len(worksheets) > 1:
         print("These are your current packing lists: \n")
 
@@ -200,13 +200,18 @@ def add_new_item_to_packing_list(worksheet):
         print(Fore.YELLOW+"Adding items to")
         print(f"'{worksheet.title}'")
         print(Fore.CYAN + "(max 30 characters and no special characters)")
+        print(Fore.RED + "Enter 'quit' to go exit")
         item = input("Enter the item you want to add: \n")
-        if (item.replace(" ", "").isalpha() and
+        if item.lower() == "quit":
+            clear()
+            check_list(worksheet)
+        elif (item.replace(" ", "").isalpha() and
                 len(item) <= 30):
             worksheet.append_row([item, "No"])
             clear()
             print(f"Item '{item}' added to the packing list.\n ")
             check_list(worksheet)
+
         else:
             print(Fore.RED + "Please use alphabetic characters only.\n")
 
@@ -333,16 +338,22 @@ def edit_existing_packing_list():
     which packing list that wants to be
     edited.
     """
-    clear()
+    
     fetch_all_lists(worksheets)
     choice = input("Enter the list # you want to work on: \n")
-    choice_index = int(choice)
-    if 0 < choice_index <= len(worksheets) - 1:
-        selected_worksheet = worksheets[choice_index]
-        check_list(selected_worksheet)
-        edit_item_on_packing_list_menu(selected_worksheet)
+    if choice.isdigit():
+        choice_index = int(choice)
+        if 0 < choice_index <= len(worksheets) - 1:
+            selected_worksheet = worksheets[choice_index]
+            check_list(selected_worksheet)
+            edit_item_on_packing_list_menu(selected_worksheet)
+        else:
+            clear()
+            print(Fore.RED+f"{choice} was not an option.")
+            print("Please enter a valid option.")
+            edit_existing_packing_list()
     else:
-        print("\n\n")
+        clear()
         print(Fore.RED+f"{choice} was not an option.")
         print("Please enter a valid option.")
         edit_existing_packing_list()
@@ -448,6 +459,7 @@ def main_menu():
     elif choice == "3":
         all_packing_lists()
     elif choice == "4":
+        clear()
         edit_existing_packing_list()
     elif choice == "5":
         quit()
