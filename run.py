@@ -234,6 +234,17 @@ def add_new_item_to_packing_list(worksheet):
 
 
 def delete_item_on_packing_list(worksheet):
+    """
+    This function will delete items
+    in the packing lists
+
+    First it checks if a digit
+    is typed else it will
+    show a message to try again.
+    If a digit is typed a question
+    will be displayed if they are
+    sure to delete or not. 
+    """
     items_list = worksheet.col_values(1)
     fetch_all_items(worksheet)
     while True:
