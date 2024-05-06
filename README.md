@@ -1,7 +1,7 @@
 https://docs.google.com/spreadsheets/d/1AV-nZAvPqpJ5bxexeTKuvK2YJYU36GT0OuKhUHCSzzk/edit?usp=sharing - Spreadsheet
 
 # Flowchart
-
+These flowchart was created before I started and are the blueprints I´ve worked after. 
 ### Main menu
 <img src="readme/flowchart_main_menu.png">
 
