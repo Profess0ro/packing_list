@@ -137,7 +137,7 @@ def create_a_new_packing_list():
             print(Fore.RED + "Please use alphabetic characters only.\n")
             print(f"'{new_worksheet_name}' is invalid.")
             print(Fore.RED + "Please try again.\n")
-        
+
     global worksheets
     worksheets = SPREADSHEET.worksheets()
 
@@ -176,10 +176,8 @@ def fetch_all_items(worksheet):
         print(Fore.YELLOW+"Here are your items in")
         print(f"{worksheet.title}:")
         print("----------------------------")
-        """for items, packed in zip(items_list, packed_list):
-            print(Fore.YELLOW+f"{items.capitalize()}, Packed?: {packed}")"""
         for index, (item, packed) in enumerate(zip(items_list, packed_list),
-                                            start=1):
+                                               start=1):
             print(f"# {index}: {item.capitalize()}, Packed?: {packed}\n")
 
 
@@ -214,8 +212,6 @@ def add_new_item_to_packing_list(worksheet):
 
 
 def delete_item_on_packing_list(worksheet):
-
-
     items_list = worksheet.col_values(1)
     fetch_all_items(worksheet)
     while True:
@@ -378,13 +374,13 @@ def delete_packing_lists(worksheets):
     This function will delete an
     existing packing list
     """
-    
+
     fetch_all_lists(worksheets)
 
     if len(worksheets) == 0:
         menu_if_no_list_exists()
         return
-    
+
     while len(worksheets):
         print(Fore.YELLOW + "Enter 'q' to go back to main menu")
         choice = input("Enter the list # you want to delete: ")
@@ -400,7 +396,6 @@ def delete_packing_lists(worksheets):
         else:
             print(Fore.RED+f"\n{choice} was not an option.")
             print("Please enter a valid number.")
-
 
 
 def quit():
