@@ -40,7 +40,7 @@ def edit_packing_list_menu():
             print(Fore.RED + f"{choice} was not an option, please try again")
 
 
-def fetch_all_lists():
+def fetch_all_lists(worksheets):
     """
     This function will collect all
     packing lists that exists.
@@ -64,7 +64,7 @@ def all_packing_lists():
     """
 
     """
-    fetch_all_lists()
+    fetch_all_lists(worksheets)
     print("\n")
     print("-------------------------------------")
     print("# 1. Add another packing list")
@@ -77,7 +77,7 @@ def all_packing_lists():
         create_a_new_packing_list()
     elif choice == "2":
         clear()
-        delete_packing_lists()
+        delete_packing_lists(worksheets)
     elif choice == "3":
         clear()
         edit_existing_packing_list_menu()
@@ -152,7 +152,8 @@ def create_a_new_packing_list():
         elif choice == "2":
             add_new_item_to_packing_list(new_worksheet)
         elif choice == "3":
-            delete_packing_lists()
+            clear()
+            delete_packing_lists(worksheets)
         elif choice == "4":
             clear()
             main_menu()
@@ -334,7 +335,7 @@ def edit_existing_packing_list():
     edited.
     """
     clear()
-    fetch_all_lists()
+    fetch_all_lists(worksheets)
     choice = input("Enter the list # you want to work on: \n")
     choice_index = int(choice)
     if 0 < choice_index <= len(worksheets) - 1:
@@ -369,24 +370,34 @@ def menu_if_no_list_exists():
         print(Fore.RED+f"{choice} was not an option. Please try again.")
 
 
-def delete_packing_lists():
+def delete_packing_lists(worksheets):
     """
     This function will delete an
     existing packing list
     """
-    clear()
-    fetch_all_lists()
-    choice = int(input("Enter the list # you want to delete: "))
-
-    if 0 < choice <= len(worksheets) - 1:
-        removed_title = worksheets[choice].title
-        SPREADSHEET.del_worksheet(worksheets[choice])
-        clear()
-        print(Fore.GREEN + f"\n'{removed_title}' was removed")
-    else:
-        print(Fore.RED+f"\n{choice} was not an option.")
-        print("Please enter a valid number.")
     
+    fetch_all_lists(worksheets)
+
+    if len(worksheets) == 0:
+        menu_if_no_list_exists()
+        return
+    
+    while len(worksheets):
+        print(Fore.YELLOW + "Enter 'q' to go back to main menu")
+        choice = input("Enter the list # you want to delete: ")
+
+        if choice.isdigit() and 0 < int(choice) <= len(worksheets) - 1:
+            removed_title = worksheets[int(choice)].title
+            SPREADSHEET.del_worksheet(worksheets[int(choice)])
+            clear()
+            print(Fore.GREEN + f"\n'{removed_title}' was removed")
+        elif choice == "q":
+            clear()
+            main_menu()
+        else:
+            print(Fore.RED+f"\n{choice} was not an option.")
+            print("Please enter a valid number.")
+
 
 
 def quit():
@@ -434,7 +445,8 @@ def main_menu():
     if choice == "1":
         create_a_new_packing_list()
     elif choice == "2":
-        delete_packing_lists()
+        clear()
+        delete_packing_lists(worksheets)
     elif choice == "3":
         all_packing_lists()
     elif choice == "4":
