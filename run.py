@@ -32,7 +32,7 @@ def edit_packing_list_menu():
             create_a_new_packing_list()
         elif choice == "2":
             clear()
-            edit_existing_packing_list()
+            edit_existing_packing_list_menu()
         elif choice == "3":
             clear()
             main_menu()
@@ -325,7 +325,7 @@ def edit_existing_packing_list_menu():
             print("\n\n")
             print(Fore.RED+f"{choice} was not an option.")
             print("Please enter a valid option.")
-            edit_existing_packing_list()
+            edit_existing_packing_list_menu()
     elif choice.lower() == "exit":
         clear()
         main_menu()
@@ -333,38 +333,7 @@ def edit_existing_packing_list_menu():
         print("\n\n")
         print(Fore.RED+f"{choice} was not an option.")
         print("Please enter a valid option.")
-        edit_existing_packing_list()
-
-
-def edit_existing_packing_list():
-    """
-    This function wants the user to select
-    which packing list that wants to be
-    edited.
-    """
-    
-    fetch_all_lists(worksheets)
-    print(Fore.RED + "Enter 'exit' to go back to main menu")
-    choice = input(Fore.CYAN + "Enter the list # you want to work on: \n")
-    if choice.isdigit():
-        choice_index = int(choice)
-        if 0 < choice_index <= len(worksheets) - 1:
-            selected_worksheet = worksheets[choice_index]
-            check_list(selected_worksheet)
-            edit_item_on_packing_list_menu(selected_worksheet)
-        else:
-            clear()
-            print(Fore.RED+f"{choice} was not an option.")
-            print("Please enter a valid option.")
-            edit_existing_packing_list()
-    elif choice.lower() == "exit":
-        clear()
-        main_menu()
-    else:
-        clear()
-        print(Fore.RED+f"{choice} was not an option.")
-        print("Please enter a valid option.")
-        edit_existing_packing_list()
+        edit_existing_packing_list_menu()
 
 
 def menu_if_no_list_exists():
@@ -468,7 +437,7 @@ def main_menu():
         all_packing_lists()
     elif choice == "4":
         clear()
-        edit_existing_packing_list()
+        edit_existing_packing_list_menu()
     elif choice == "5":
         quit()
     else:
