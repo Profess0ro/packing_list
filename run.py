@@ -302,7 +302,7 @@ def change_status_on_item(worksheet):
     while True:
         print(Fore.RED + "Enter 'exit' to go back")
         item_index_input = input(Fore.BLUE +
-                                 "Enter # of the item to change:\n")
+                                 "Enter # of the item to change status on:\n")
         if item_index_input.lower() == "exit":
             check_list(worksheet)
         elif item_index_input.isdigit():
