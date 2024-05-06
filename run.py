@@ -226,7 +226,7 @@ def add_new_item_to_packing_list(worksheet):
                 len(item) <= 30):
             worksheet.append_row([item, "No"])
             clear()
-            print(f"Item '{item}' added to the packing list.\n ")
+            print(Fore.GREEN + f"Item '{item}' added to the packing list.\n ")
             check_list(worksheet)
 
         else:
@@ -343,7 +343,7 @@ def edit_item_on_packing_list_menu(worksheet):
     print("2. Delete an item")
     print("3. Change packing status on item")
     print("4. Edit another packing list")
-    print("5. Quit to main menu\n\n")
+    print("5. Quit to main menu")
 
     choice = input(Fore.CYAN+"Enter your choice: \n")
 
@@ -385,10 +385,11 @@ def edit_existing_packing_list_menu():
         choice_index = int(choice)
         if 0 < choice_index <= len(worksheets) - 1:
             selected_worksheet = worksheets[choice_index]
+            clear()
             check_list(selected_worksheet)
             edit_item_on_packing_list_menu(selected_worksheet)
         else:
-            print("\n\n")
+            print("\n")
             print(Fore.RED+f"{choice} was not an option.")
             print("Please enter a valid option.")
             edit_existing_packing_list_menu()
