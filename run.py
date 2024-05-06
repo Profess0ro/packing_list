@@ -40,7 +40,10 @@ def fetch_all_lists(worksheets):
 
 def all_packing_lists():
     """
-
+    When user wants to list all
+    packing lists this menu will
+    be displayed with options 
+    to go further
     """
     clear()
     fetch_all_lists(worksheets)
@@ -73,14 +76,14 @@ def create_a_new_packing_list():
     list (worksheet) in the spreadsheet
     that is connected to this app.
 
-    When created, the user will get options
+    Option to exit this exectution
+    if 'exit' is typed.
+
+    When created a new packing list
+    the global worksheets
+    will update and the user
+    will get options
     on what to do next.
-
-    ---------------------------------------
-
-    When you have created a packing list,
-    a menu will be shown with options for
-    the user asking what to do next.
     """
     clear()
     print(Fore.YELLOW + "Oh! So you are planning to travel again\n")
@@ -149,6 +152,14 @@ def create_a_new_packing_list():
 
 
 def fetch_all_items(worksheet):
+    """
+    This function will display
+    the items that exists in
+    the packing list or
+    give a message that
+    there are no items in
+    the packing list
+    """
     items_list = worksheet.col_values(1)
     packed_list = worksheet.col_values(2)
     if len(items_list) == 0:
@@ -164,6 +175,17 @@ def fetch_all_items(worksheet):
 
 
 def check_list(worksheet):
+    """
+    When a user wants to edit
+    a packing list the function
+    fetch_all_items will be
+    called to display all items.
+    edit_item_on_packing_list_menu
+    will then be called to
+    show the user options
+    on how to go further with
+    this packing list.
+    """
     fetch_all_items(worksheet)
     edit_item_on_packing_list_menu(worksheet)
 
@@ -174,8 +196,13 @@ def add_new_item_to_packing_list(worksheet):
     to the selected packing list
     and add "No" on the second column
     that indicates if it´s packed
-    or not
+    or not.
+    It checks if the items name:
+    - already exists
+    - are alphabetic characters only
+    - are 'exit' to go back
     """
+    items_list = [item.lower() for item in worksheet.col_values(1)]
     clear()
     while True:
         print(Fore.YELLOW+"Adding items to")
@@ -186,6 +213,12 @@ def add_new_item_to_packing_list(worksheet):
         if item.lower() == "exit":
             clear()
             check_list(worksheet)
+        elif item.lower() in items_list:
+            clear()
+            print(Fore.RED + "An item with the name")
+            print(f"'{item}'")
+            print(Fore.RED + "already exists.")
+            print("Please choose another item.\n")
         elif (item.replace(" ", "").isalpha() and
                 len(item) <= 30):
             worksheet.append_row([item, "No"])
