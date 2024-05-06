@@ -18,6 +18,10 @@ https://docs.google.com/spreadsheets/d/1AV-nZAvPqpJ5bxexeTKuvK2YJYU36GT0OuKhUHCS
 | Edit existing packing list | Navigated to edit packing list page | Choosed # 4 at main menu | Got to the edit packing list page | Pass |
 | Quit | Program shutting down | Choosed # 5 at main menu | Program shut down | Pass |
 
+# Bugs
+### Bugs encountered when testing
+- When you created a new packing list and wanted to delete a packing list directly after, it didn´t showed the newly created packing list.<br>- **Solution**: Update the worksheet list with "global worksheets" in the create new packing list function.
+
 # Credits
 
 - https://www.youtube.com/watch?v=aEIHZDv_23U - For basic structure of this application<br>
