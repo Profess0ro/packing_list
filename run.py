@@ -19,28 +19,6 @@ SPREADSHEET = GSPREAD_CLIENT.open("packing_list_app")
 worksheets = SPREADSHEET.worksheets()
 
 
-def edit_packing_list_menu():
-    while True:
-        print("----------------------------------------------\n")
-        print("1. Create a new packing list")
-        print("2. Add items to a packing list")
-        print("3. Go back to main menu\n\n")
-        choice = input("What do you want to do now? ")
-
-        if choice == "1":
-            print("\n")
-            create_a_new_packing_list()
-        elif choice == "2":
-            clear()
-            edit_existing_packing_list_menu()
-        elif choice == "3":
-            clear()
-            main_menu()
-            break
-        else:
-            print(Fore.RED + f"{choice} was not an option, please try again")
-
-
 def fetch_all_lists(worksheets):
     """
     This function will collect all
