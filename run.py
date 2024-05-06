@@ -454,6 +454,7 @@ def delete_packing_lists(worksheets):
             clear()
             main_menu()
         else:
+            clear()
             print(Fore.RED+f"\n{choice} was not an option.")
             print("Please enter a valid number.")
             delete_packing_lists(worksheets)
