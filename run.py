@@ -449,12 +449,14 @@ def delete_packing_lists(worksheets):
             SPREADSHEET.del_worksheet(worksheets[int(choice)])
             clear()
             print(Fore.GREEN + f"\n'{removed_title}' was removed")
+            delete_packing_lists(worksheets)
         elif choice.lower() == "exit":
             clear()
             main_menu()
         else:
             print(Fore.RED+f"\n{choice} was not an option.")
             print("Please enter a valid number.")
+            delete_packing_lists(worksheets)
 
 
 def quit():
