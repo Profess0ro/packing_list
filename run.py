@@ -320,7 +320,7 @@ def change_status_on_item(worksheet):
                     clear()
                     print(Fore.GREEN + "You have unpacked")
                     print(f"'{item}'")
-                check_list(worksheet)
+                change_status_on_item(worksheet)
                 return
             else:
                 print(Fore.RED + "Invalid #. Please try again.")
