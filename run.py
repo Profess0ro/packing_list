@@ -313,8 +313,9 @@ def edit_existing_packing_list_menu():
         print("These are your current packing lists: \n")
     for index, worksheet in enumerate(worksheets[1:], start=1):
         print(f"# {index} - {worksheet.title.capitalize()}")
+    print(Fore.RED + "Enter 'exit' to go back to main menu")
     choice = input("Enter the list # you want to work on: \n")
-    try:
+    if choice.isdigit():
         choice_index = int(choice)
         if 0 < choice_index <= len(worksheets) - 1:
             selected_worksheet = worksheets[choice_index]
@@ -325,7 +326,10 @@ def edit_existing_packing_list_menu():
             print(Fore.RED+f"{choice} was not an option.")
             print("Please enter a valid option.")
             edit_existing_packing_list()
-    except ValueError:
+    elif choice.lower() == "exit":
+        clear()
+        main_menu()
+    else:
         print("\n\n")
         print(Fore.RED+f"{choice} was not an option.")
         print("Please enter a valid option.")
