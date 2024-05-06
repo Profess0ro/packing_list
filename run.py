@@ -443,12 +443,12 @@ def delete_packing_lists(worksheets):
     while len(worksheets):
         print(Fore.RED + "Enter 'exit' to go back to main menu")
         choice = input("Enter the list # you want to delete: \n")
-
         if choice.isdigit() and 0 < int(choice) <= len(worksheets) - 1:
             removed_title = worksheets[int(choice)].title
             SPREADSHEET.del_worksheet(worksheets[int(choice)])
             clear()
             print(Fore.GREEN + f"\n'{removed_title}' was removed")
+            worksheets = SPREADSHEET.worksheets()
             delete_packing_lists(worksheets)
         elif choice.lower() == "exit":
             clear()
@@ -457,7 +457,6 @@ def delete_packing_lists(worksheets):
             print(Fore.RED+f"\n{choice} was not an option.")
             print("Please enter a valid number.")
             delete_packing_lists(worksheets)
-
 
 def quit():
     """
