@@ -442,7 +442,7 @@ def delete_packing_lists(worksheets):
 
     while len(worksheets):
         print(Fore.RED + "Enter 'exit' to go back to main menu")
-        choice = input("Enter the list # you want to delete: ")
+        choice = input("Enter the list # you want to delete: \n")
 
         if choice.isdigit() and 0 < int(choice) <= len(worksheets) - 1:
             removed_title = worksheets[int(choice)].title
