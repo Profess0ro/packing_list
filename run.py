@@ -64,6 +64,7 @@ def all_packing_lists():
     """
 
     """
+    clear()
     fetch_all_lists(worksheets)
     print("\n")
     print("-------------------------------------")
@@ -106,10 +107,14 @@ def create_a_new_packing_list():
     clear()
     print(Fore.YELLOW + "Oh! So you are planning to travel again\n")
     while True:
+        print(Fore.RED + "Enter 'exit' to go back to main menu")
         print(Fore.CYAN + "(max 20 characters and no special characters)")
         new_worksheet_name = input(
             "What's the name of your new packing list?: \n")
-        if (new_worksheet_name.replace(" ", "").isalpha() and
+        if new_worksheet_name.lower() == "exit":
+            clear()
+            main_menu()
+        elif (new_worksheet_name.replace(" ", "").isalpha() and
                 len(new_worksheet_name) <= 20):
             worksheet_titles = [worksheet.title.lower() for
                                 worksheet in SPREADSHEET.worksheets()]
@@ -200,9 +205,9 @@ def add_new_item_to_packing_list(worksheet):
         print(Fore.YELLOW+"Adding items to")
         print(f"'{worksheet.title}'")
         print(Fore.CYAN + "(max 30 characters and no special characters)")
-        print(Fore.RED + "Enter 'quit' to go exit")
+        print(Fore.RED + "Enter 'exit' to go back")
         item = input("Enter the item you want to add: \n")
-        if item.lower() == "quit":
+        if item.lower() == "exit":
             clear()
             check_list(worksheet)
         elif (item.replace(" ", "").isalpha() and
@@ -244,14 +249,9 @@ def delete_item_on_packing_list(worksheet):
 
 
 def change_status_on_item(worksheet):
+    fetch_all_items(worksheet)
     items_list = worksheet.col_values(1)
     packed_list = worksheet.col_values(2)
-    clear()
-    print(Fore.YELLOW + f"Items in {worksheet.title}:\n")
-    for index, (item, packed) in enumerate(zip(items_list, packed_list),
-                                           start=1):
-        print(f"# {index}: {item.capitalize()}, Packed?: {packed}\n")
-
     while True:
         item_index = input(Fore.BLUE + "Enter # of the item to change:\n")
         if item_index.isdigit():
@@ -262,7 +262,7 @@ def change_status_on_item(worksheet):
                 print(Fore.RED + "Invalid #. Please try again.")
         else:
             print(Fore.RED + "Invalid input. Please enter a number.")
-
+    item = item_index.title()
     packed_status = packed_list[item_index - 1]
     new_status = "Yes" if packed_status == "No" else "No"
     worksheet.update_cell(item_index, 2, new_status)
@@ -393,7 +393,7 @@ def delete_packing_lists(worksheets):
         return
 
     while len(worksheets):
-        print(Fore.YELLOW + "Enter 'q' to go back to main menu")
+        print(Fore.YELLOW + "Enter 'exit' to go back to main menu")
         choice = input("Enter the list # you want to delete: ")
 
         if choice.isdigit() and 0 < int(choice) <= len(worksheets) - 1:
@@ -401,7 +401,7 @@ def delete_packing_lists(worksheets):
             SPREADSHEET.del_worksheet(worksheets[int(choice)])
             clear()
             print(Fore.GREEN + f"\n'{removed_title}' was removed")
-        elif choice == "q":
+        elif choice.lower() == "exit":
             clear()
             main_menu()
         else:
