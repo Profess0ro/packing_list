@@ -451,7 +451,7 @@ def delete_packing_lists(worksheets):
 
     If there are no lists, it will
     show a menu with options to go further.
-    
+
     Because you can't delete
     all worksheets in a spreadsheet,
     index # 0 can't be deleted, using
@@ -484,7 +484,7 @@ def delete_packing_lists(worksheets):
                 delete_packing_lists(worksheets)
             elif confirmation.lower() == 'n':
                 clear()
-                print(f"{removed_title}")
+                print(Fore.WHITE + f"'{removed_title}'")
                 print(Fore.RED + "was not deleted.")
                 delete_packing_lists(worksheets)
             else:
