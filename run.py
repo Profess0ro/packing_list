@@ -237,7 +237,8 @@ def add_new_item_to_packing_list(worksheet):
                 len(item) <= 30):
             worksheet.append_row([item, "No"])
             clear()
-            print(Fore.GREEN + f"Item '{item}' added to the packing list.\n ")
+            print(f"'{item}'")
+            print(Fore.GREEN + "added to the packing list.\n ")
             check_list(worksheet)
 
         else:
