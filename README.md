@@ -46,6 +46,15 @@ These flowchart was created before I started and are the blueprints I´ve worked
 `Adding items to packing list`<br>
 | Feature | Expected Outcome | Testing Performed | Result | Pass/Fail |
 | --- | --- | --- | --- | --- |
+| Adding an item | Item successfully added to list and shows up on worksheet in with 'No' in second column | Added "Passport" | "Passport" was created and showed up with "No" in second column | Pass |
+| Adding same item that exists | A message shall tell me that the item already exists on the list | Adding "Passport" again | Message told me that "Passport" already exists | Pass |
+| Adding item with special characters | A message shall tell me to only use alphabetic characters | Adding "Passport!" | A message told me to only use alphabetic characters | Pass |
+| Adding item with digits | A message shall tell me to only use alphabetic characters | Adding "Passport1" | A message told me to only use alphabetic characters | Pass |
+<img src="readme/adding_item1.png">
+<img src="readme/adding_item2.png">
+<img src="readme/adding_item3.png">
+<img src="readme/adding_item4.png">
+<img src="readme/adding_item5.png">
 
 
 # Bugs
