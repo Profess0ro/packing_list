@@ -294,10 +294,12 @@ def delete_item_on_packing_list(worksheet):
                     continue
             else:
                 clear()
-                print(Fore.RED+f"'{item_index_input}' Please enter a valid #.")
+                print(f"'{item_index_input}'")
+                print(Fore.RED+"is not a valid #. Please enter a valid #.")
         else:
             clear()
-            print(Fore.RED + f"'{item_index_input}' Please enter a valid #.")
+            print(f"'{item_index_input}'")
+            print(Fore.RED+"is not a valid #. Please enter a valid #.")
         check_list(worksheet)
 
 
