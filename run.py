@@ -409,7 +409,7 @@ def edit_existing_packing_list_menu():
         clear()
         main_menu()
     else:
-        print("\n\n")
+        clear()
         print(Fore.RED+f"{choice} was not an option.")
         print("Please enter a valid option.")
         edit_existing_packing_list_menu()
