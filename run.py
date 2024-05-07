@@ -445,16 +445,22 @@ def menu_if_no_list_exists():
 def delete_packing_lists(worksheets):
     """
     This function will delete an
-    existing packing list
+    existing packing list.
     First it will check if
-    there are any lists created
-    else show a menu with
-    options to go further
-    Because you can´t delete
-    all worksheets in a spreadsheet
-    index # 0 can´t be deleted, using
+    there are any lists created.
+
+    If there are no lists, it will
+    show a menu with options to go further.
+    
+    Because you can't delete
+    all worksheets in a spreadsheet,
+    index # 0 can't be deleted, using
     '0 < int(choice)' will disable
-    choosing 0
+    choosing 0.
+
+    There are also a confirmation
+    if the chosen packing list
+    should be deleted or not.
     """
 
     fetch_all_lists(worksheets)
@@ -465,21 +471,33 @@ def delete_packing_lists(worksheets):
 
     while len(worksheets):
         print(Fore.RED + "Enter 'exit' to go back to main menu")
-        choice = input(Fore.CYAN+"Enter the list # you want to delete: \n")
+        choice = input(Fore.CYAN + "Enter the list # you want to delete: \n")
         if choice.isdigit() and 0 < int(choice) <= len(worksheets) - 1:
             removed_title = worksheets[int(choice)].title
-            SPREADSHEET.del_worksheet(worksheets[int(choice)])
-            clear()
-            print(Fore.GREEN + f"\n'{removed_title}' was removed")
-            worksheets = SPREADSHEET.worksheets()
-            delete_packing_lists(worksheets)
+            confirmation = input(Fore.YELLOW + 
+                                 f"Delete '{removed_title}'? (y/n)")
+            if confirmation.lower() == 'y':
+                SPREADSHEET.del_worksheet(worksheets[int(choice)])
+                clear()
+                print(Fore.GREEN + f"\n'{removed_title}' was deleted")
+                worksheets = SPREADSHEET.worksheets()
+                delete_packing_lists(worksheets)
+            elif confirmation.lower() == 'n':
+                clear()
+                print(f"{removed_title}")
+                print(Fore.RED + "was not deleted.")
+                delete_packing_lists(worksheets)
+            else:
+                clear()
+                print(Fore.RED + "Invalid choice. Please enter 'y' or 'n'.")
+                delete_packing_lists(worksheets)
         elif choice.lower() == "exit":
             clear()
             main_menu()
         else:
             clear()
-            print(Fore.RED+f"\n'{choice}' was not an option.")
-            print(Fore.RED+"Please enter a valid number.")
+            print(Fore.RED + f"\n'{choice}' was not an option.")
+            print(Fore.RED + "Please enter a valid number.")
             delete_packing_lists(worksheets)
 
 
