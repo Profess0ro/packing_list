@@ -318,39 +318,43 @@ def change_status_on_item(worksheet):
     fetch_all_items(worksheet)
     items_list = worksheet.col_values(1)
     packed_list = worksheet.col_values(2)
-    while True:
-        print(Fore.RED + "Enter 'exit' to go back")
-        item_index_input = input(Fore.CYAN +
-                                 "Enter # of the item to change status on:\n")
-        if item_index_input.lower() == "exit":
-            clear()
-            check_list(worksheet)
-        elif item_index_input.isdigit():
-            item_index = int(item_index_input)
-            if 1 <= item_index <= len(items_list):
-                item = items_list[item_index - 1]
-                packed_status = packed_list[item_index - 1]
-                new_status = "Yes" if packed_status == "No" else "No"
-                worksheet.update_cell(item_index, 2, new_status)
-                if new_status == "Yes":
-                    clear()
-                    print(Fore.GREEN + "You have packed")
-                    print(f"'{item}'")
+    if len(items_list) == 0:
+        clear()
+        fetch_all_items(worksheet)
+    else:
+        while True:
+            print(Fore.RED + "Enter 'exit' to go back")
+            item_index_input = input(Fore.CYAN +
+                                    "Enter # of the item to be changed:\n")
+            if item_index_input.lower() == "exit":
+                clear()
+                check_list(worksheet)
+            elif item_index_input.isdigit():
+                item_index = int(item_index_input)
+                if 1 <= item_index <= len(items_list):
+                    item = items_list[item_index - 1]
+                    packed_status = packed_list[item_index - 1]
+                    new_status = "Yes" if packed_status == "No" else "No"
+                    worksheet.update_cell(item_index, 2, new_status)
+                    if new_status == "Yes":
+                        clear()
+                        print(Fore.GREEN + "You have packed")
+                        print(f"'{item}'")
+                    else:
+                        clear()
+                        print(Fore.GREEN + "You have unpacked")
+                        print(f"'{item}'")
+                    change_status_on_item(worksheet)
                 else:
                     clear()
-                    print(Fore.GREEN + "You have unpacked")
-                    print(f"'{item}'")
-                change_status_on_item(worksheet)
+                    print(Fore.WHITE + f"'{item_index_input}'")
+                    print(Fore.RED + "Is an invalid #. Please try again.")
+                    change_status_on_item(worksheet)
             else:
                 clear()
                 print(Fore.WHITE + f"'{item_index_input}'")
                 print(Fore.RED + "Is an invalid #. Please try again.")
                 change_status_on_item(worksheet)
-        else:
-            clear()
-            print(Fore.WHITE + f"'{item_index_input}'")
-            print(Fore.RED + "Is an invalid #. Please try again.")
-            change_status_on_item(worksheet)
 
 
 def edit_item_on_packing_list_menu(worksheet):
