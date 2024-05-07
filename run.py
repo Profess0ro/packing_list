@@ -323,6 +323,7 @@ def change_status_on_item(worksheet):
         item_index_input = input(Fore.CYAN +
                                  "Enter # of the item to change status on:\n")
         if item_index_input.lower() == "exit":
+            clear()
             check_list(worksheet)
         elif item_index_input.isdigit():
             item_index = int(item_index_input)
