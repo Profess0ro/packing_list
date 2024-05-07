@@ -281,7 +281,7 @@ def delete_item_on_packing_list(worksheet):
                 if confirm.lower() == "y":
                     worksheet.delete_rows(item_index)
                     clear()
-                    print(Fore.GREEN + f"Item '{items_list[item_index - 1]}'")
+                    print(f"'{items_list[item_index - 1]}'")
                     print(Fore.GREEN + "deleted successfully.")
                 elif confirm.lower() == "n":
                     clear()
