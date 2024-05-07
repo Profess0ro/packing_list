@@ -310,18 +310,23 @@ def change_status_on_item(worksheet):
     the items that are in
     the packing lists.
 
+    First it will check if
+    there are any items
+    to be changed
+
     It will check:
     - if a correct index # is typed
     - if a digit is typed
     - if 'exit is typed it will go back
     """
-    fetch_all_items(worksheet)
+    
     items_list = worksheet.col_values(1)
     packed_list = worksheet.col_values(2)
     if len(items_list) == 0:
         clear()
         fetch_all_items(worksheet)
-    else:
+    else: 
+        fetch_all_items(worksheet)
         while True:
             print(Fore.RED + "Enter 'exit' to go back")
             item_index_input = input(Fore.CYAN +
