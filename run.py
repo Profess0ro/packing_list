@@ -383,11 +383,7 @@ def edit_existing_packing_list_menu():
     if there are any packing lists
     created else show a message
     """
-    worksheets = SPREADSHEET.worksheets()
-    if len(worksheets) > 1:
-        print(Fore.YELLOW+"These are your current packing lists: \n")
-    for index, worksheet in enumerate(worksheets[1:], start=1):
-        print(f"# {index} - {worksheet.title.capitalize()}")
+    fetch_all_lists(worksheets)
     print(Fore.RED + "Enter 'exit' to go back to main menu")
     choice = input(Fore.CYAN+"Enter the list # you want to work on: \n")
     if choice.isdigit():
