@@ -72,6 +72,19 @@ These flowchart was created before I started and are the blueprints I´ve worked
 <img src="readme/delete_item5.png">
 <img src="readme/delete_item6.png">
 
+`Changing packing status on item`<br>
+| Feature | Expected Outcome | Testing Performed | Result | Pass/Fail |
+| --- | --- | --- | --- | --- |
+| Changing from 'No' to 'Yes' | When changing status a message shall tell me that the item has been packed | Changed "Passport" status | A message told me that the item has been packed and it changed 'No' to 'Yes' | Pass |
+| Changing from 'Yes' to 'No' | When changing status a message shall tell me that the item has been unpacked | Changed "Passport" status | A message told me that the item has been unpacked and changed 'Yes' to 'No' | Pass |
+| Enter wrong choices | When enter wrong choices a message shall tell me that wrong choice has been made | Entered wrong index in different kinds ('t', '0', '!') | Message told me that the value entered is invalid | Pass |
+| Change item when packing list is empty | When chosing to change status on an empty packing list you will brought back to edit menu | Tried to change status on empty list | Brought back to edit menu page and it says that I don´t have any items on the list | Pass |
+<img src="readme/changing_status1.png">
+<img src="readme/changing_status2.png">
+<img src="readme/changing_status3.png">
+<img src="readme/changing_status4.png">
+<img src="readme/changing_status5.png">
+
 
 
 # Bugs
@@ -79,6 +92,7 @@ These flowchart was created before I started and are the blueprints I´ve worked
 - When you created a new packing list and wanted to delete a packing list directly after, it didn´t showed the newly created packing list.<br>- **Solution:** Update the worksheet list with "global worksheets" in the create new packing list function.
 - If you typed a alphabetic character when the choice was a digit and vice versa, it did´t gave a message that it was a wrong choice.<br>- **Solution:** Added `if ____.isdigit/.isalpha` to the check if choice are made with right input.
 - If you wanted to delete an item even if there wasn´t any in the list, the question which # to delete still showed up.<br>- **Solution:** Added `if not items_list:` to see if there are any items added to the list.
+- If there are no items to be changed, it still asked which item to be changed.<br>- **Solution:** added `if len(items_list) == 0:` before asking which item that shall be changed.
 # Resources
 
 - https://www.youtube.com/watch?v=aEIHZDv_23U - For basic structure of this application.<br>
