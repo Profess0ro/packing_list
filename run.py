@@ -475,11 +475,12 @@ def delete_packing_lists(worksheets):
         if choice.isdigit() and 0 < int(choice) <= len(worksheets) - 1:
             removed_title = worksheets[int(choice)].title
             confirmation = input(Fore.YELLOW + 
-                                 f"Delete '{removed_title}'? (y/n)")
+                                 f"Delete '{removed_title}'? (y/n)\n")
             if confirmation.lower() == 'y':
                 SPREADSHEET.del_worksheet(worksheets[int(choice)])
                 clear()
-                print(Fore.GREEN + f"\n'{removed_title}' was deleted")
+                print(Fore.WHITE + f"\n'{removed_title}'")
+                print(Fore.GREEN + "was deleted")
                 worksheets = SPREADSHEET.worksheets()
                 delete_packing_lists(worksheets)
             elif confirmation.lower() == 'n':
