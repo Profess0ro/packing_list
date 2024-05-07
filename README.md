@@ -35,11 +35,13 @@ These flowchart was created before I started and are the blueprints I´ve worked
 `Deleting a packing list`<br>
 | Feature | Expected Outcome | Testing Performed | Result | Pass/Fail |
 | --- | --- | --- | --- | --- |
-| Delete an existing packing list | Delete chosen # list and confrimed | Chosed to delete # 2 and confirmed | The correct packing list was deleted | Pass |
+| Delete an existing packing list | Delete chosen # list and confrimed | Chosed to delete # 2 and confirmed | The chosed packing list was deleted | Pass |
+| Declining a deletion | When declining a deletion, the packing list shall not be deleted | 
 | Trying to delete a # that doesn´t exist | A message shall tell me that # doesn´t exist | Tried to delete # 0 | Message told me that # 0 was not an option | Pass |
 | Deleting the last existing packing list | Menu shall shown that no packing list exists | Deleted the last packing list | Message told me there are no more packing lists and menu with options shown | Pass |
 <img src="readme/delete_packing_list1.png">
 <img src="readme/delete_packing_list2.png">
+<img src="readme/delete_packing_list5.png">
 <img src="readme/delete_packing_list3.png">
 <img src="readme/delete_packing_list4.png">
 
@@ -62,11 +64,13 @@ These flowchart was created before I started and are the blueprints I´ve worked
 | Delete an item | When deleting an item, a confirmation question shall be shown. When confirmed the item shall be deleted | Delete "Toothpaste" and confirmed | After confirmation a message shown that "Toothpaste" was deleted and it disappeared from the list | Pass |
 | Declining deletion of an item | When you declining a deletion of an item, the item shall not be deleted and you get back to edit menu | Declining deletion of "City map" | When declined the deletion of "City map" a message shown that the item wasn´t deleted and got back to edit menu | Pass |
 | Delete an index not existing | When trying to delete an index not shown in list a message shall tell me that index doesn´t exist | Tried deleting #7 and 't' | Message told me that #7 and 't' was a invalid input | Pass |
+| Deleting the last item | When deleted the last item a message shall tell me that there are no items in the packing list | Deleted all items | A message told me that there are no items in the packing list | Pass |
 <img src="readme/delete_item1.png">
 <img src="readme/delete_item2.png">
 <img src="readme/delete_item3.png">
 <img src="readme/delete_item4.png">
 <img src="readme/delete_item5.png">
+<img src="readme/delete_item6.png">
 
 
 
