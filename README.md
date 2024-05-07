@@ -35,7 +35,7 @@ These flowchart was created before I started and are the blueprints I´ve worked
 `Deleting a packing list`<br>
 | Feature | Expected Outcome | Testing Performed | Result | Pass/Fail |
 | --- | --- | --- | --- | --- |
-| Delete an existing packing list | Delete chosen # list | Chosed to delete # 2 | The correct packing list was deleted | Pass |
+| Delete an existing packing list | Delete chosen # list and confrimed | Chosed to delete # 2 and confirmed | The correct packing list was deleted | Pass |
 | Trying to delete a # that doesn´t exist | A message shall tell me that # doesn´t exist | Tried to delete # 0 | Message told me that # 0 was not an option | Pass |
 | Deleting the last existing packing list | Menu shall shown that no packing list exists | Deleted the last packing list | Message told me there are no more packing lists and menu with options shown | Pass |
 <img src="readme/delete_packing_list1.png">
