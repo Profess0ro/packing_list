@@ -315,7 +315,6 @@ def change_status_on_item(worksheet):
     - if a digit is typed
     - if 'exit is typed it will go back
     """
-    clear()
     fetch_all_items(worksheet)
     items_list = worksheet.col_values(1)
     packed_list = worksheet.col_values(2)
@@ -341,7 +340,6 @@ def change_status_on_item(worksheet):
                     print(Fore.GREEN + "You have unpacked")
                     print(f"'{item}'")
                 change_status_on_item(worksheet)
-                return
             else:
                 print(Fore.RED + "Invalid #. Please try again.")
         else:
