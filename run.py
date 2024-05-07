@@ -385,11 +385,11 @@ def edit_existing_packing_list_menu():
     """
     worksheets = SPREADSHEET.worksheets()
     if len(worksheets) > 1:
-        print("These are your current packing lists: \n")
+        print(Fore.YELLOW+"These are your current packing lists: \n")
     for index, worksheet in enumerate(worksheets[1:], start=1):
         print(f"# {index} - {worksheet.title.capitalize()}")
     print(Fore.RED + "Enter 'exit' to go back to main menu")
-    choice = input("Enter the list # you want to work on: \n")
+    choice = input(Fore.CYAN+"Enter the list # you want to work on: \n")
     if choice.isdigit():
         choice_index = int(choice)
         if 0 < choice_index <= len(worksheets) - 1:
