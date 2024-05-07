@@ -219,7 +219,8 @@ def add_new_item_to_packing_list(worksheet):
     while True:
         print(Fore.YELLOW+"Adding items to")
         print(f"'{worksheet.title}'")
-        print(Fore.CYAN + "(max 30 characters and no special characters)")
+        print(Fore.CYAN + "(max 30 characters)")
+        print(Fore.CYAN +"(no special characters or digits)")
         print(Fore.RED + "Enter 'exit' to go back")
         item = input("Enter the item you want to add: \n")
         if item.lower() == "exit":
