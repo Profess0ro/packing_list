@@ -242,7 +242,7 @@ def add_new_item_to_packing_list(worksheet):
             clear()
             print(Fore.RED + "Please use alphabetic characters only.")
             print(f"{item}")
-            print(Fore.RED + "is not valid")
+            print(Fore.RED + "is not valid\n")
 
 
 def delete_item_on_packing_list(worksheet):
