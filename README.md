@@ -56,6 +56,19 @@ These flowchart was created before I started and are the blueprints I´ve worked
 <img src="readme/adding_item4.png">
 <img src="readme/adding_item5.png">
 
+`Deleting items from packing list`<br>
+| Feature | Expected Outcome | Testing Performed | Result | Pass/Fail |
+| --- | --- | --- | --- | --- |
+| Delete an item | When deleting an item, a confirmation question shall be shown. When confirmed the item shall be deleted | Delete "Toothpaste" and confirmed | After confirmation a message shown that "Toothpaste" was deleted and it disappeared from the list | Pass |
+| Declining deletion of an item | When you declining a deletion of an item, the item shall not be deleted and you get back to edit menu | Declining deletion of "City map" | When declined the deletion of "City map" a message shown that the item wasn´t deleted and got back to edit menu | Pass |
+| Delete an index not existing | When trying to delete an index not shown in list a message shall tell me that index doesn´t exist | Tried deleting #7 and 't' | Message told me that #7 and 't' was a invalid input | Pass |
+<img src="readme/delete_item1.png">
+<img src="readme/delete_item2.png">
+<img src="readme/delete_item3.png">
+<img src="readme/delete_item4.png">
+<img src="readme/delete_item5.png">
+
+
 
 # Bugs
 ### Bugs encountered when testing
