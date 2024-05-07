@@ -341,9 +341,15 @@ def change_status_on_item(worksheet):
                     print(f"'{item}'")
                 change_status_on_item(worksheet)
             else:
+                clear()
+                print(f"{item_index_input}")
                 print(Fore.RED + "Invalid #. Please try again.")
+                change_status_on_item(worksheet)
         else:
-            print(Fore.RED + "Invalid input. Please enter a number.")
+            clear()
+            print(f"{item_index_input}")
+            print(Fore.RED + "Invalid #. Please try again.")
+            change_status_on_item(worksheet)
 
 
 def edit_item_on_packing_list_menu(worksheet):
@@ -382,8 +388,10 @@ def edit_item_on_packing_list_menu(worksheet):
         clear()
         main_menu()
     else:
-        print(f"{choice} is not a valid input. Please try again.")
-        edit_item_on_packing_list_menu()
+        clear()
+        print(Fore.WHITE+f"'{choice}'")
+        print(Fore.RED + "is not a valid input. Please try again.")
+        edit_item_on_packing_list_menu(worksheet)
 
 
 def edit_existing_packing_list_menu():
