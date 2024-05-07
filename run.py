@@ -342,13 +342,13 @@ def change_status_on_item(worksheet):
                 change_status_on_item(worksheet)
             else:
                 clear()
-                print(Fore.WHITE + f"{item_index_input}")
-                print(Fore.RED + "Invalid #. Please try again.")
+                print(Fore.WHITE + f"'{item_index_input}'")
+                print(Fore.RED + "Is an invalid #. Please try again.")
                 change_status_on_item(worksheet)
         else:
             clear()
-            print(Fore.WHITE + f"{item_index_input}")
-            print(Fore.RED + "Invalid #. Please try again.")
+            print(Fore.WHITE + f"'{item_index_input}'")
+            print(Fore.RED + "Is an invalid #. Please try again.")
             change_status_on_item(worksheet)
 
 
