@@ -269,7 +269,7 @@ def delete_item_on_packing_list(worksheet):
     while True:
         print("\n")
         print(Fore.RED + "Enter 'exit' to go back")
-        item_index_input = input(Fore.CYAN + "Which item # to delete: \n")
+        item_index_input = input(Fore.CYAN + "Which # shall be deleted?\n")
         if item_index_input.lower() == "exit":
             clear()
             check_list(worksheet)
