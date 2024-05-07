@@ -27,6 +27,15 @@ def fetch_all_lists(worksheets):
     If there are no lists created
     menu_if_no_list_exists()
     will be called
+
+    Because you can´t delete all
+    worksheets in a spreadsheet
+    the list of all worksheets are
+    spliced using:
+    'enumerate(worksheets[1:], start=1'
+    this will show worksheets starting
+    with index 1 and start the list
+    with 1.
     """
     if len(worksheets) > 1:
         print("These are your current packing lists: \n")
@@ -432,6 +441,11 @@ def delete_packing_lists(worksheets):
     there are any lists created
     else show a menu with
     options to go further
+    Because you can´t delete
+    all worksheets in a spreadsheet
+    index # 0 can´t be deleted, using
+    '0 < int(choice)' will disable
+    choosing 0
     """
 
     fetch_all_lists(worksheets)
