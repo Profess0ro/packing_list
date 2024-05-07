@@ -320,7 +320,7 @@ def change_status_on_item(worksheet):
     packed_list = worksheet.col_values(2)
     while True:
         print(Fore.RED + "Enter 'exit' to go back")
-        item_index_input = input(Fore.BLUE +
+        item_index_input = input(Fore.CYAN +
                                  "Enter # of the item to change status on:\n")
         if item_index_input.lower() == "exit":
             check_list(worksheet)
