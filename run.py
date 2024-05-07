@@ -381,7 +381,9 @@ def edit_existing_packing_list_menu():
     """
     This function will first check
     if there are any packing lists
-    created else show a message
+    Then provide a choice which
+    packing list that shall
+    be edited.
     """
     fetch_all_lists(worksheets)
     print(Fore.RED + "Enter 'exit' to go back to main menu")

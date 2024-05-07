@@ -1,5 +1,5 @@
-https://docs.google.com/spreadsheets/d/1AV-nZAvPqpJ5bxexeTKuvK2YJYU36GT0OuKhUHCSzzk/edit?usp=sharing - Spreadsheet
-
+https://docs.google.com/spreadsheets/d/1AV-nZAvPqpJ5bxexeTKuvK2YJYU36GT0OuKhUHCSzzk/edit?usp=sharing - Spreadsheet<br>
+https://projectprofessoro-7c74b3018064.herokuapp.com/ - Live page
 # Flowchart
 These flowchart was created before I started and are the blueprints I´ve worked after. 
 ### Main menu
@@ -32,7 +32,7 @@ These flowchart was created before I started and are the blueprints I´ve worked
 <img src="readme/create_packing_list5.png">
 <img src="readme/create_packing_list4.png">
 
-`delete a packing list`<br>
+`Deleting a packing list`<br>
 | Feature | Expected Outcome | Testing Performed | Result | Pass/Fail |
 | --- | --- | --- | --- | --- |
 | Delete an existing packing list | Delete chosen # list | Chosed to delete # 2 | The correct packing list was deleted | Pass |
@@ -42,6 +42,11 @@ These flowchart was created before I started and are the blueprints I´ve worked
 <img src="readme/delete_packing_list2.png">
 <img src="readme/delete_packing_list3.png">
 <img src="readme/delete_packing_list4.png">
+
+`Adding items to packing list`<br>
+| Feature | Expected Outcome | Testing Performed | Result | Pass/Fail |
+| --- | --- | --- | --- | --- |
+
 
 # Bugs
 ### Bugs encountered when testing
