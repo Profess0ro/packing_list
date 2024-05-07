@@ -101,7 +101,8 @@ def create_a_new_packing_list():
     print(Fore.YELLOW + "Oh! So you are planning to travel again\n")
     while True:
         print(Fore.RED + "Enter 'exit' to go back to main menu")
-        print(Fore.CYAN + "(max 20 characters and no special characters)")
+        print(Fore.CYAN + "(max 20 characters)")
+        print(Fore.CYAN + "(no special characters or digits)")
         new_worksheet_name = input(
             "What's the name of your new packing list?: \n")
         if new_worksheet_name.lower() == "exit":
