@@ -287,7 +287,7 @@ def delete_item_on_packing_list(worksheet):
                 elif confirm.lower() == "n":
                     clear()
                     print(Fore.RED + 
-                          f"Deletion of {items_list[item_index - 1]}canceled.")
+                          f"Deletion of {items_list[item_index - 1]} canceled.")
                 else:
                     clear()
                     print(Fore.RED + f"{confirm} invalid")
