@@ -1,7 +1,56 @@
-https://docs.google.com/spreadsheets/d/1AV-nZAvPqpJ5bxexeTKuvK2YJYU36GT0OuKhUHCSzzk/edit?usp=sharing - Spreadsheet<br>
-https://projectprofessoro-7c74b3018064.herokuapp.com/ - Live page
+# **Packing list planner**
+This packing list planner are created to help the user keep track what and what they haven´t packed before going on a trip. In this planner the user can create packing lists and add items to the lists. Multiple packing lists can be created since every list is a worksheet in the spreadsheet. While the user are packing they can come back and change packing status on the item. This will help the user keep track on what they have and haven´t packed. This planner will be available wherever you are and you can´t loose it as you can do with a paperlist.<br><br>
+<img src="readme/main_menu.png">
+
+
+[Link to spreadsheet](https://docs.google.com/spreadsheets/d/1AV-nZAvPqpJ5bxexeTKuvK2YJYU36GT0OuKhUHCSzzk/edit?usp=sharing)<br>
+[Link to application](https://projectprofessoro-7c74b3018064.herokuapp.com)
+
+# Content
+- [Developer´s goal](#developers-goal)<br>
+- [User´s goal](#users-goal)<br>
+- [Flowchart](#flowchart)<br>
+- [Testing](#testing)<br>
+- [Bugs](#bugs)<br>
+- [Resources](#resources)<br>
+- [Credits](#credits)<br>
+<hr>
+
+### Developer's goal
+
+1.	*Create a Simple Interface* 
+	- Make this application easy for all users to handle, with instructions readable and very clear how to go further/backwards in every step.
+
+2.	*Implement Core Functions*
+	- Create this application with functions such as creating multiple packing lists that you can edit with:<br>- adding items<br>- deleting items<br>- list all items<br>- change packing status between "yes" and "no"<br>
+    Other functions that can be used are: delete packing list and show all packing lists
+
+3.	*Store Created Packing Lists*
+	- Incorporate Google Sheets for managing the data that has been entered by the user. This makes the data accessible wherever the user are located. So they can keep up by adding items if something that they want to pack pops up at work or on the bus.
+
+4.	*Easy User Experience*
+	- This application is made to fit every kind of user with easy options and easy formed input validation. If something is enter invalid, messages will show what was wrong and how to enter valid data for the user.
+    
+5.	*Learn and Apply New Skills*
+	- With this project it was a great opportunity to learn the python language. And with Google sheets API connected it was a experience to work with this data management.
+
+### User's goal
+
+With this application the user´s goal is to make their planning before a trip easier than using pen and paper. Papers are easy to loose and on that piece of paper could have been items they forgets to pack when leaving on a trip. Therefor this application are made to help them organize the packing before leaving on a trip. 
+
+
+1.	*Organized before leaving on a trip*
+	- When you have several places to visit in a short time, the user can create multiple packing list with the items for each place to visit.
+	
+2.	*Packing progress*
+	- On every packing list the user can provide items that should be packed for each visit and change status whether the item is packed or not. So that nothing is forgotten when leaving home.
+
+4.	*Easy to use*
+	- Interaction with this application is easy since the information, validation and feedback provides helpfully to complete the tasks.
+    
+
 # Flowchart
-These flowchart was created before I started and are the blueprints I´ve worked after. 
+These are the flowcharts that was created before starting this project and are the blueprints for this planner. 
 ### Main menu
 <img src="readme/flowchart_main_menu.png">
 
@@ -108,3 +157,4 @@ These flowchart was created before I started and are the blueprints I´ve worked
 # Credits 
 
 - Rohit Sharma - My mentor
+- [Jaqi´s Readme](https://github.com/JaqiKal/task-master?tab=readme-ov-file#objectives) - This helped me write this Readme.
