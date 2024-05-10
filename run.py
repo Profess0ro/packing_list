@@ -64,7 +64,7 @@ def all_packing_lists():
     choice = input(Fore.CYAN+"What do you want to do now?\n")
     if choice == "1":
         clear()
-        create_a_new_packing_list()
+        a_new_packing_list()
     elif choice == "2":
         clear()
         delete_packing_lists(worksheets)
@@ -78,7 +78,7 @@ def all_packing_lists():
         print(Fore.RED+f"{choice} was not a option. Try again")
 
 
-def create_a_new_packing_list():
+def a_new_packing_list():
     """
     This function creates a new packing
     list (worksheet) in the spreadsheet
@@ -149,7 +149,7 @@ def create_a_new_packing_list():
 
         if choice == "1":
             print("\n")
-            create_a_new_packing_list()
+            a_new_packing_list()
         elif choice == "2":
             add_new_item_to_packing_list(new_worksheet)
         elif choice == "3":
@@ -448,7 +448,7 @@ def menu_if_no_list_exists():
 
     if choice == "1":
         clear()
-        create_a_new_packing_list()
+        a_new_packing_list()
     elif choice == "2":
         clear()
         main_menu()
@@ -564,7 +564,7 @@ def main_menu():
     choice = input(Fore.CYAN+"Enter your choice:\n")
 
     if choice == "1":
-        create_a_new_packing_list()
+        a_new_packing_list()
     elif choice == "2":
         clear()
         delete_packing_lists(worksheets)
