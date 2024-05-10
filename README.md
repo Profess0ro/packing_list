@@ -15,6 +15,7 @@ This packing list planner are created to help the user keep track what and what 
 - [Flowchart](#flowchart)<br>
 - [Testing](#testing)<br>
 - [Bugs](#bugs)<br>
+- [Validation](#validation)<br>
 - [Resources](#resources)<br>
 - [Credits](#credits)<br>
 <hr>
@@ -210,6 +211,11 @@ These are the flowcharts that was created before starting this project and are t
 - If you typed a alphabetic character when the choice was a digit and vice versa, it did´t gave a message that it was a wrong choice.<br>- **Solution:** Added `if ____.isdigit/.isalpha` to the check if choice are made with right input.
 - If you wanted to delete an item even if there wasn´t any in the list, the question which # to delete still showed up.<br>- **Solution:** Added `if not items_list:` to see if there are any items added to the list.
 - If there are no items to be changed, it still asked which item to be changed.<br>- **Solution:** added `if len(items_list) == 0:` before asking which item that shall be changed.
+
+# Validation
+Extracted the code in to the pep8 validation and found no errors in the code:<br><br>
+<img src="readme/pep8_validation.png">
+
 # Resources
 
 - [The Basic structure of this application](https://www.youtube.com/watch?v=aEIHZDv_23U) - This tutorial helped me start with this project<br>
