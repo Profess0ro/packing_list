@@ -12,10 +12,14 @@ This packing list planner are created to help the user keep track what and what 
 - [User stories](#user-stories)<br>
 - [Design](#design)<br>
 - [Existing features](#existing-features)<br>
+- [Future features](#future-features)<br>
 - [Flowchart](#flowchart)<br>
 - [Testing](#testing)<br>
 - [Bugs](#bugs)<br>
 - [Validation](#validation)<br>
+- [Technologies](#technologies)<br>
+- [Imports](#imports)<br>
+- [Deployment](#deployment)<br>
 - [Resources](#resources)<br>
 - [Credits](#credits)<br>
 <hr>
@@ -118,6 +122,8 @@ When the user wants to delete a packing list, first the packing lists that are c
 When the user wants to see what packing lists they have created a submenu will be shown with options on how to go further<br><br>
 <img src="readme/show_all_lists.png">
 
+# Future features
+
 # Flowchart
 These are the flowcharts that was created before starting this project and are the blueprints for this planner. 
 ### Main menu
@@ -215,6 +221,12 @@ These are the flowcharts that was created before starting this project and are t
 # Validation
 Extracted the code in to the pep8 validation and found no errors in the code:<br><br>
 <img src="readme/pep8_validation.png">
+
+# Technologies
+
+# Imports
+
+# Deployment
 
 # Resources
 
