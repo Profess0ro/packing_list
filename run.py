@@ -56,7 +56,6 @@ def all_packing_lists():
     """
     clear()
     fetch_all_lists(worksheets)
-    print("\n")
     print("-------------------------------------")
     print("# 1. Add another packing list")
     print("# 2. Delete a packing list")
