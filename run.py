@@ -146,7 +146,7 @@ def create_a_new_packing_list():
         print(f"2. Add items to packing list '{new_worksheet_name}'")
         print("3. Delete a packing list")
         print("4. Go back to main menu\n\n")
-        choice = input("What do you want to do now? \n")
+        choice = input(Fore.CYAN + "What do you want to do now? \n")
 
         if choice == "1":
             print("\n")
