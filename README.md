@@ -88,30 +88,30 @@ This color are applied to:<br>- the options of every menu<br>- the items and pac
 
 ### Create a new packing list
 When a packing list have been created with a valid name, a submenu will be shown with options for the user how to continue with this application.<br>
-<img src="readme/creating_packing_list1.png">
+<img src="readme/creating_packing_list1.png"><br>
 <img src="readme/creating_packing_list2.png">
 
 ### Add items to packing lists
 When items have been added with valid data, the item will appear on the packing list with 'No' as packing status. There will be a submenu appearing underneith the list with options how the user wants to continue with this application.<br><br>
-<img src="readme/add_items1.png">
+<img src="readme/add_items1.png"><br>
 <img src="readme/add_items2.png">
 
 ### Change packing status on items
 When the user wants to change an items packing status, first all the items will appear that is on the packing list. Then the user will choose which item they want to change status on. A confirmation message will then be visual that you either have packed or unpacked an item.<br><br>
-<img src="readme/change_status1.png">
-<img src="readme/change_status2.png">
+<img src="readme/change_status1.png"><br>
+<img src="readme/change_status2.png"><br>
 <img src="readme/change_status3.png">
 
 ### Deleting an item
 When the user wants to delete an item from the packing list, first all the items will appear. After a choice of item has been made a confirmation of deleting that item will appear for the user. Either if the deletion has been confirmed or not, a message will be shown what decision has been made.<br><br>
-<img src="readme/deleting_item1.png">
-<img src="readme/deleting_item3.png">
+<img src="readme/deleting_item1.png"><br>
+<img src="readme/deleting_item3.png"><br>
 <img src="readme/deleting_item2.png">
 
 ### Delete a packing list
 When the user wants to delete a packing list, first the packing lists that are created will be shown for the user before choosing which list they want to delete. After a choice has been made the user have to confirm the deletion. Either if the deletion has been confirmed or not, a message will be shown what decision has been made.<br><br>
-<img src="readme/deleting_packing_list1.png">
-<img src="readme/deleting_packing_list2.png">
+<img src="readme/deleting_packing_list1.png"><br>
+<img src="readme/deleting_packing_list2.png"><br>
 <img src="readme/deleting_packing_list3.png">
 
 ### Show all packing lists
