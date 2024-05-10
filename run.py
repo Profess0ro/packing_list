@@ -220,7 +220,7 @@ def add_new_item_to_packing_list(worksheet):
         print(Fore.YELLOW+"Adding items to")
         print(f"'{worksheet.title}'")
         print(Fore.CYAN + "(max 30 characters)")
-        print(Fore.CYAN +"(no special characters or digits)")
+        print(Fore.CYAN + "(no special characters or digits)")
         print(Fore.RED + "Enter 'exit' to go back")
         item = input("Enter the item you want to add: \n")
         if item.lower() == "exit":
@@ -318,18 +318,17 @@ def change_status_on_item(worksheet):
     - if a digit is typed
     - if 'exit is typed it will go back
     """
-    
     items_list = worksheet.col_values(1)
     packed_list = worksheet.col_values(2)
     if len(items_list) == 0:
         clear()
         fetch_all_items(worksheet)
-    else: 
+    else:
         fetch_all_items(worksheet)
         while True:
             print(Fore.RED + "Enter 'exit' to go back")
             item_index_input = input(Fore.CYAN +
-                                    "Enter # of the item to be changed:\n")
+                                     "Enter # of the item to be changed:\n")
             if item_index_input.lower() == "exit":
                 clear()
                 check_list(worksheet)
@@ -489,7 +488,7 @@ def delete_packing_lists(worksheets):
         choice = input(Fore.CYAN + "Enter the list # you want to delete: \n")
         if choice.isdigit() and 0 < int(choice) <= len(worksheets) - 1:
             removed_title = worksheets[int(choice)].title
-            confirmation = input(Fore.YELLOW + 
+            confirmation = input(Fore.YELLOW +
                                  f"Delete '{removed_title}'? (y/n)\n")
             if confirmation.lower() == 'y':
                 SPREADSHEET.del_worksheet(worksheets[int(choice)])
