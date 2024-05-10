@@ -9,6 +9,7 @@ This packing list planner are created to help the user keep track what and what 
 # Content
 - [Developer´s goal](#developers-goal)<br>
 - [User´s goal](#users-goal)<br>
+- [User stories](#user-stories)<br>
 - [Flowchart](#flowchart)<br>
 - [Testing](#testing)<br>
 - [Bugs](#bugs)<br>
@@ -48,6 +49,16 @@ With this application the user´s goal is to make their planning before a trip e
 4.	*Easy to use*
 	- Interaction with this application is easy since the information, validation and feedback provides helpfully to complete the tasks.
     
+# User stories
+
+### **First time visitor goals**
+- When visiting this application for the first time it´s easy to understand what the functions are in this packing list planner so I can start prepare for my trips. <br>- ***Achived by:*** Providing the user easy navigation through all functions with validation and error messages when invalid data are entered.
+
+### **Returning visitor goals**
+- When returning to this application I can check how my packing progress are going before going to my trip. I can change status if some items are packed and also add and delete items to my existing list. <br>- ***Achieved by:*** The user can go in and edit a packing list and with functions as change packing status on every item, add and delete items on the list. 
+
+### **Frequently visitor goals**
+- If I´m going to prepare packing lists for multiple trips in a short time there´s an option for me to create multiple packing lists so I can keep track on every trips packing lists. <br>- ***Achieved by:*** Let the user add additional packing list and add items to each and every single packing list with their unique items.
 
 # Flowchart
 These are the flowcharts that was created before starting this project and are the blueprints for this planner. 
