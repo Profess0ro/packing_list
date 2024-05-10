@@ -10,6 +10,7 @@ This packing list planner are created to help the user keep track what and what 
 - [Developer´s goal](#developers-goal)<br>
 - [User´s goal](#users-goal)<br>
 - [User stories](#user-stories)<br>
+- [Design](#design)<br>
 - [Flowchart](#flowchart)<br>
 - [Testing](#testing)<br>
 - [Bugs](#bugs)<br>
@@ -59,6 +60,27 @@ With this application the user´s goal is to make their planning before a trip e
 
 ### **Frequently visitor goals**
 - If I´m going to prepare packing lists for multiple trips in a short time there´s an option for me to create multiple packing lists so I can keep track on every trips packing lists. <br>- ***Achieved by:*** Let the user add additional packing list and add items to each and every single packing list with their unique items.
+
+# Design
+
+### Colorscheme
+
+- For this application I´ve tried to have the same color to the similar information. Here is how I have used the colors:
+
+**Cyan**<br>
+This color are applied to:<br>- the input questions<br>- descriptions on how to enter the data
+
+**Green**<br>
+This color are applied to:<br>- messages that confirms decisions that where made (adding items/packing lists, changing status and deletion of items/packing lists)
+
+**Red**<br>
+This color are applied to:<br>- error messages when data entered invalid<br>- guidance on how the user exits when they don´t want to enter any data
+
+**Yellow**<br>
+This color are applied to: <br>- the welcome and goodbye text of this application<br>- The guidance to the user which packing list they are editing<br>- The question when they are going to confirm a deletion of an item or a packing list
+
+**White**<br>
+This color are applied to:<br>- the options of every menu<br>- the items and packing lists when they are listed
 
 # Flowchart
 These are the flowcharts that was created before starting this project and are the blueprints for this planner. 
