@@ -124,6 +124,9 @@ When the user wants to see what packing lists they have created a submenu will b
 
 # Future features
 
+- **Item quantity:** For example if the user wants to pack 4 pair of pants there will be a choice when adding items that they can choose to also add the amount of pairs that they want to pack. The user would also when editing this item add how many that has been packed.
+- **Countdown timer:** Add a countdown timer so the user can add which date they are traveling and see how many days there are left to pack the items.
+
 # Flowchart
 These are the flowcharts that was created before starting this project and are the blueprints for this planner. 
 ### Main menu
