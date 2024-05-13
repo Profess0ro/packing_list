@@ -227,6 +227,13 @@ Extracted the code in to the pep8 validation and found no errors in the code:<br
 
 # Technologies
 
+- [Python Linter](https://pep8ci.herokuapp.com/#) - Code Institutes code checker to see if there are errors with the style conventions in PEP8.
+- [Draw.io](https://www.drawio.com/) - Planning tool that was used to create the flowcharts for this application that I had as blueprints.
+- [Git](https://git-scm.com/) - Used to export the code with `git add` `git commit` `git push`
+- [Visual Studio Code](https://code.visualstudio.com/) - The EDI that I used for coding this application. Very easy to use EDI and in this EDI you can debug your code with extensions such as 'python debugger', that was very useful when coding.
+- [Github](https://github.com/) - Online storage of the code with repositories. Here you can go back and follow your changes if you notice a problem that has occured with your code.
+- [Heroku](https://id.heroku.com/login) - The page where this application are deployed and hosted.
+
 # Imports
 
 # Deployment
@@ -236,7 +243,6 @@ Extracted the code in to the pep8 validation and found no errors in the code:<br
 - [The Basic structure of this application](https://www.youtube.com/watch?v=aEIHZDv_23U) - This tutorial helped me start with this project<br>
 - [W3schools](https://www.w3schools.com/) - Learning the meaning of the python codes<br>
 - [API Guides](https://developers.google.com/sheets/api/guides/concepts) - How to work with spreadsheets/worksheets in python<br>
-- [Pep8](https://pep8ci.herokuapp.com/#) - Validation of the python code (Python Linter).<br>
 - [Flake8rules](https://www.flake8rules.com/) - Helping me explaining the  errors in "Python Linter".<br>
 - [Clear function](https://www.geeksforgeeks.org/clear-screen-python/) - How to install and use the `clear()` function<br>
 - [Colorama](https://pypi.org/project/colorama/) - How to install and use the Colorama library<br>
