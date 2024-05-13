@@ -236,6 +236,13 @@ Extracted the code in to the pep8 validation and found no errors in the code:<br
 
 # Imports
 
+- [OS](https://www.geeksforgeeks.org/os-module-python-examples/?ref=lbp) - With this module the application can operate with the operation system for the `clear()` function.
+- [Colorama](https://pypi.org/project/colorama/) - This module are used to add textcolor to this application.
+- [Gspread](https://pypi.org/project/gspread/) - API module to help this application collaborate with Google Spreadsheets.
+
+**To install these imports:** `pip install _name of import_`<br>
+**To generate modules to requirements.txt:** `pip freeze > requirements.txt` 
+
 # Deployment
 
 # Resources
@@ -245,7 +252,6 @@ Extracted the code in to the pep8 validation and found no errors in the code:<br
 - [API Guides](https://developers.google.com/sheets/api/guides/concepts) - How to work with spreadsheets/worksheets in python<br>
 - [Flake8rules](https://www.flake8rules.com/) - Helping me explaining the  errors in "Python Linter".<br>
 - [Clear function](https://www.geeksforgeeks.org/clear-screen-python/) - How to install and use the `clear()` function<br>
-- [Colorama](https://pypi.org/project/colorama/) - How to install and use the Colorama library<br>
 - [Main block function](https://medium.com/@adheremo65/what-is-the-main-block-in-python-if-name-main-d9f7410ef2f2#:~:text=Why%20do%20we%20need%20to,a%20module%20into%20another%20script) - Explaining `if __name__ == "__main__":` code<br>
 - [Python strings](https://www.tutorialspoint.com/python/python_strings.htm) - How to use `.isdigit`and `.isalpha`<br>
 
